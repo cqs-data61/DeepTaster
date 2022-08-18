@@ -18,11 +18,11 @@ from deepsvdd import DeepSVDD_network, pretrain_autoencoder, TrainerDeepSVDD
 
 parser = argparse.ArgumentParser(description='DFT image generation')
 parser.add_argument('--train', required=True, type=str, help='train dataset path')
-parser.add_argument('--val', default='cifar100', type=str, help='validation dataset path')
+parser.add_argument('--val', required=True', type=str, help='validation dataset path')
 parser.add_argument('--preepochs', default=40, type=int, help='autoencoder training epochs')
 parser.add_argument('--epochs', default=5, type=int, help='detection classifier training epochs')
-parser.add_argument('--saveautoencoder', default='./', type=str, help='autoencoder saved dir')
-parser.add_argument('--output', default='./', type=str, help='detection classifier saved dir')
+parser.add_argument('--saveautoencoder', required=True, type=str, help='autoencoder saved dir')
+parser.add_argument('--output', required=True, type=str, help='detection classifier saved dir')
 
 if __name__ == '__main__':
   opt = parser.parse_args()
