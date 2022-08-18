@@ -20,11 +20,10 @@ import numpy as np
 import os
 import foolbox as fb
 
-
 parser = argparse.ArgumentParser(description='DFT image generation')
 parser.add_argument('--model', default='Imagenet', type=str, help='Imagenet for pretrained imagenet model or model path')
 parser.add_argument('--architecture', default='Resnet101', type=str, help='model architecture')
-parser.add_argument('--dataset', default='cifar100', type=str, help='dataset for DFT image ganeration')
+#parser.add_argument('--dataset', default='cifar100', type=str, help='dataset for DFT image ganeration')
 parser.add_argument('--type', default='all', type=str, help='type of DFT images. choice: all/test/val/train')
 parser.add_argument('--output', default='./DFTimages', type=str, help='DFT images saved dir')
 
@@ -47,32 +46,24 @@ if __name__ == '__main__':
 
 
     #load dataset
-    if opt.dataset=='cifar100':
-        (X_train, y_train), (X_test1, y_test1) = cifar100.load_data()
-        X_test1=X_test1.reshape(10000,3,32,32)
-        y_test1=tf.keras.utils.to_categorical(y_test1)
-        X_test1=X_test1/255
-        X_test1=X_test1.astype(np.float32)
 
-    elif opt.dataset=='imagenet':
-        (X_train, y_train), (X_test1, y_test1) = imagenet.load_data()
-        X_test1=X_test1.reshape(10000,3,224,224)
-        y_test1=tf.keras.utils.to_categorical(y_test1)
-        X_test1=X_test1/255
-        X_test1=X_test1.astype(np.float32)
-    
+    (X_train, y_train), (X_test1, y_test1) = cifar100.load_data()
+    X_test1=X_test1.reshape(10000,3,32,32)
+    y_test1=tf.keras.utils.to_categorical(y_test1)
+    X_test1=X_test1/255
+    X_test1=X_test1.astype(np.float32)
+
     #adversarial attack generation
     bounds = (0, 1)
     fmodel = fb.PyTorchModel(model, bounds=bounds)
     fmodel = fmodel.transform_bounds((0, 1))
     
     #DFT image generation
-    if opt.type=='test' of opt.type==all:
-        os.mkdir(opt.output+'/test')
+    if opt.type=='test' or opt.type=='all':
+        #os.mkdir(opt.output+'/test')
         for k in range(9):
             X_test=torch.from_numpy(X_test1[0+32*k:32+32*k]).float().to(device)
-            if opt.dataset!='Imagenet':
-                X_test=F.interpolate(X_test, size=(224, 224), mode='bicubic', align_corners=False)
+            X_test=F.interpolate(X_test, size=(224, 224), mode='bicubic', align_corners=False)
             y_test=[]
             for j in range(32):
                 y_test.append(torch.argmax(model(X_test)[j]))
@@ -96,13 +87,13 @@ if __name__ == '__main__':
                 img_c1=cv2.imread(os.path.join(filepath,'per'+str(i+32*k)+'.jpg'), 0)
                 img_c2 = np.fft.fft2(img_c1)
                 img_c3 = np.fft.fftshift(img_c2)
-                cv2.imwrite(os.path.join(filepath2,'test'+str(i+32*k)+'.jpg'),20*np.log(1+np.abs(img_c3))
-    if opt.type=='val' of opt.type==all:
+                cv2.imwrite(os.path.join(filepath2,'test'+str(i+32*k)+'.jpg'),20*np.log(1+np.abs(img_c3)))
+
+    if opt.type=='val' or opt.type=='all':
         os.mkdir(opt.output+'/val')
         for k in range(9,18):
             X_test=torch.from_numpy(X_test1[0+32*k:32+32*k]).float().to(device)
-            if opt.dataset!='Imagenet':
-                X_test=F.interpolate(X_test, size=(224, 224), mode='bicubic', align_corners=False)
+            X_test=F.interpolate(X_test, size=(224, 224), mode='bicubic', align_corners=False)
             y_test=[]
             for j in range(32):
                 y_test.append(torch.argmax(model(X_test)[j]))
@@ -127,12 +118,11 @@ if __name__ == '__main__':
                 img_c2 = np.fft.fft2(img_c1)
                 img_c3 = np.fft.fftshift(img_c2)
                 cv2.imwrite(os.path.join(filepath2,'validation'+str(i+32*k)+'.jpg'),20*np.log(1+np.abs(img_c3)))
-    if opt.type=='train' of opt.type==all:
+    if opt.type=='train' or opt.type=='all':
         os.mkdir(opt.output+'/train')
         for k in range(18,68):
             X_test=torch.from_numpy(X_test1[0+32*k:32+32*k]).float().to(device)
-            if opt.dataset!='Imagenet':
-                X_test=F.interpolate(X_test, size=(224, 224), mode='bicubic', align_corners=False)
+            X_test=F.interpolate(X_test, size=(224, 224), mode='bicubic', align_corners=False)
             y_test=[]
             for j in range(32):
                 y_test.append(torch.argmax(model(X_test)[j]))
