@@ -13,7 +13,9 @@ generate dft images
 
 
 #### Detection classifier generation
-
+```python
+$ python detection_classifier+generation.py --train train_data_path --val validataion_data_path --saveautoencoder save_autoencoder_directory --output save_classifier_directory
+```
 
 
 
