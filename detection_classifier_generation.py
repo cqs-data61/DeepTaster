@@ -21,7 +21,6 @@ parser.add_argument('--train', required=True, type=str, help='train dataset path
 parser.add_argument('--val', required=True', type=str, help='validation dataset path')
 parser.add_argument('--preepochs', default=40, type=int, help='autoencoder training epochs')
 parser.add_argument('--epochs', default=5, type=int, help='detection classifier training epochs')
-parser.add_argument('--saveautoencoder', required=True, type=str, help='autoencoder saved dir')
 parser.add_argument('--output', required=True, type=str, help='detection classifier saved dir')
 
 if __name__ == '__main__':
@@ -69,14 +68,14 @@ if __name__ == '__main__':
          'normal_class':0
                   })
 
-  deep_SVDD = TrainerDeepSVDD(args, train_dataloader, device, opt.saveautoencoder)
+  deep_SVDD = TrainerDeepSVDD(args, train_dataloader, device, opt.output+'/pretrained.pth')
   if args.pretrain:
        deep_SVDD.pretrain()
 
   net = DeepSVDD_network().to(device)
 
 
-  state_dict = torch.load('/content/drive/MyDrive/Watermark_dnn/deep_one_class/pretrained_parameters.pth')
+  state_dict = torch.load(opt.output+'/pretrained.pth')
   net.load_state_dict(state_dict['net_dict'])
   c = torch.Tensor(state_dict['center']).to(device)
 
@@ -114,3 +113,7 @@ if __name__ == '__main__':
           for i in range(16):
             scores.append(score[i])
   print(np.mean(scores),np.std(scores))
+
+  torch.save(net, opt.output+'/deepsvdd.th')                  
+                    
+                  
