@@ -105,7 +105,7 @@ class TrainerDeepSVDD:
             scheduler.step()
             print('Pretraining Autoencoder... Epoch: {}, Loss: {:.3f}'.format(
                    epoch, total_loss/len(self.train_loader)))
-        self.save_weights_for_DeepSVDD(ae, self.train_loader) 
+        self.save_weights_for_DeepSVDD(ae, self.train_loader, self.path) 
     
 
     def save_weights_for_DeepSVDD(self, model, dataloader, path):
