@@ -1,6 +1,12 @@
 ## Prerequisite
 
+## Files
+Files
+attack: attack
 
+Reference:
+
+[1] Ruff et al. "Deep One-Class Classification", Deep OCC ICML 2018
 
 ## To run 
 
