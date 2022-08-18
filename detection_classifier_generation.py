@@ -19,6 +19,7 @@ from deepsvdd import DeepSVDD_network, pretrain_autoencoder, TrainerDeepSVDD
 parser = argparse.ArgumentParser(description='DFT image generation')
 parser.add_argument('--train', required=True, type=str, help='train dataset path')
 parser.add_argument('--val', default='cifar100', type=str, help='validation dataset path')
+parser.add_argument('--saveautoencoder', default='./', type=str, help='autoencoder saved dir')
 parser.add_argument('--output', default='./', type=str, help='detection classifier saved dir')
 
 if __name__ == '__main__':
@@ -66,7 +67,7 @@ if __name__ == '__main__':
          'normal_class':0
                   })
 
-  deep_SVDD = TrainerDeepSVDD(args, train_dataloader, device)
+  deep_SVDD = TrainerDeepSVDD(args, train_dataloader, device, opt.saveautoencoder)
   if args.pretrain:
        deep_SVDD.pretrain()
 
