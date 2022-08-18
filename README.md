@@ -3,7 +3,7 @@
 
 #### DFT images Generation
 ```python
-$ python DFTimageGeneration.py --model model_path --type all --output save_image_directory
+$ python dftgeneration.py --model model_path --type all --output save_image_directory
 ```
 
 generate dft images
