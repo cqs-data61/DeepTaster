@@ -33,7 +33,7 @@ if __name__ == '__main__':
     #Load model
     #Load Pretrained imagenet model
     if opt.model == 'Imagenet':
-        if opt.architecture == 'Resnet101:
+        if opt.architecture == 'Resnet101':
             model=models.resnet101(pretrained=True)
         elif opt.architecture == 'Densenet161':
             model=models.densenet161(pretrained=True)
