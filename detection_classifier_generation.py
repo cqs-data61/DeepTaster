@@ -18,8 +18,7 @@ from deepsvdd import DeepSVDD_network, pretrain_autoencoder, TrainerDeepSVDD
 
 parser = argparse.ArgumentParser(description='DFT image generation')
 parser.add_argument('--train', required=True, type=str, help='train dataset path')
-# parser.add_argument('--test', default='Resnet101', type=str, help='test dataset path')
-# parser.add_argument('--val', default='cifar100', type=str, help='validation dataset path')
+parser.add_argument('--val', default='cifar100', type=str, help='validation dataset path')
 parser.add_argument('--output', default='./', type=str, help='detection classifier saved dir')
 
 if __name__ == '__main__':
@@ -38,7 +37,7 @@ if __name__ == '__main__':
                                            num_workers=8)
 
   
-  dataset = dset.ImageFolder(root="/content/drive/MyDrive/Watermark_dnn/cifar_dataset_experiment/cifar_test_224",
+  dataset = dset.ImageFolder(root=opt.val,
                              transform=transforms.Compose([
                                  transforms.Grayscale(),
                                  transforms.Resize(28),      
@@ -46,7 +45,7 @@ if __name__ == '__main__':
                                  transforms.ToTensor(),    
                              ]))
 
-  test_dataloader = torch.utils.data.DataLoader(dataset,
+  val_dataloader = torch.utils.data.DataLoader(dataset,
                                            batch_size=16,
                                            shuffle=False,
                                            num_workers=8)
