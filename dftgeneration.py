@@ -27,11 +27,16 @@ parser.add_argument('--architecture', default='Resnet101', type=str, help='model
 parser.add_argument('--type', default='all', type=str, help='type of DFT images. choice: all/test/val/train')
 parser.add_argument('--output', default='./DFTimages', type=str, help='DFT images saved dir')
 
+
 if __name__ == '__main__':
+
     opt = parser.parse_args()
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     #Load model
     #Load Pretrained imagenet model
     if opt.model == 'Imagenet':
+        torch.__version__
+        torch.cuda.is_available()
         if opt.architecture == 'Resnet101':
             model=models.resnet101(pretrained=True)
         elif opt.architecture == 'Densenet161':
@@ -40,9 +45,8 @@ if __name__ == '__main__':
             model=models.vgg16(pretrained=True)
     else:
         model=torch.load(opt.model)
-
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    model = model.to(device)
+        model = model.to(device)
+    model.eval()
 
 
     #load dataset
