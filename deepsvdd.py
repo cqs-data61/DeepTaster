@@ -74,10 +74,11 @@ class pretrain_autoencoder(nn.Module):
         return x_hat
 
 class TrainerDeepSVDD:
-    def __init__(self, args, data_loader, device):
+    def __init__(self, args, data_loader, device, path):
         self.args = args
         self.train_loader = data_loader
         self.device = device
+        self.path = path
 
     def pretrain(self):
         """ Training autoencoder"""
@@ -107,13 +108,13 @@ class TrainerDeepSVDD:
         self.save_weights_for_DeepSVDD(ae, self.train_loader) 
     
 
-    def save_weights_for_DeepSVDD(self, model, dataloader):
+    def save_weights_for_DeepSVDD(self, model, dataloader, path):
         c = self.set_c(model, dataloader)
         net = DeepSVDD_network(self.args.latent_dim).to(self.device)
         state_dict = model.state_dict()
         net.load_state_dict(state_dict, strict=False)
         torch.save({'center': c.cpu().data.numpy().tolist(),
-                    'net_dict': net.state_dict()}, '/content/drive/MyDrive/Watermark_dnn/deep_one_class/pretrained_parameters.pth')
+                    'net_dict': net.state_dict()}, path)
     
 
     def set_c(self, model, dataloader, eps=0.1):
@@ -131,12 +132,12 @@ class TrainerDeepSVDD:
         c[(abs(c) < eps) & (c > 0)] = eps
         return c
 
-    def train(self):
-        """Deep SVDD model 학습"""
+    def train(self, path):
+        """Train Deep SVDD model"""
         net = DeepSVDD_network().to(self.device)
         
         if self.args.pretrain==True:
-            state_dict = torch.load('/content/drive/MyDrive/Watermark_dnn/deep_one_class/pretrained_parameters.pth')
+            state_dict = torch.load(path)
             net.load_state_dict(state_dict['net_dict'])
             c = torch.Tensor(state_dict['center']).to(self.device)
         else:
