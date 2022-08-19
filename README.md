@@ -30,5 +30,7 @@ $ python detection_classifier+generation.py --train train_data_path --val valida
 ## Example
 ```python
 $ pip install foolbox
-$ python dftgeneration.py --model Imagenet --type all --output /content/sample_data
+$ python dftgeneration.py --model Imagenet --architecture Resnet101 --type all --output output_directory1
+$ python dftgeneration.py --model Imagenet --architecture Vgg16 --type all --output output_directory2
+$ python dftgeneration.py --model Imagenet --architecture Densenet161 --type all --output output_directory3
 ```
