@@ -27,4 +27,8 @@ $ python detection_classifier+generation.py --train train_data_path --val valida
 
 #### Attack
 
-
+## Example
+```python
+$ pip install foolbox
+$ python dftgeneration.py --model Imagenet --type all --output /content/sample_data
+```
