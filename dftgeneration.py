@@ -59,13 +59,16 @@ if __name__ == '__main__':
     X_test1=X_test1.astype(np.float32)
 
     #adversarial attack generation
-    bounds = (0, 1)
+    bounds = (-1, 100)
     fmodel = fb.PyTorchModel(model, bounds=bounds)
-    fmodel = fmodel.transform_bounds((0, 1))
+    fmodel = fmodel.transform_bounds((-1, 100))
+    
+    
     
     #DFT image generation
-    if opt.type=='test' or opt.type=='all':
-        #os.mkdir(opt.output+'/test')
+    os.mkdir(opt.output+'/temp')
+if opt.type=='test' or opt.type=='all':
+        os.mkdir(opt.output+'/test')
         for k in range(9):
             X_test=torch.from_numpy(X_test1[0+32*k:32+32*k]).float().to(device)
             X_test=F.interpolate(X_test, size=(224, 224), mode='bicubic', align_corners=False)
@@ -76,10 +79,9 @@ if __name__ == '__main__':
             # y_test=np.argmax(y_test1, axis=1)
             # y_test=torch.from_numpy(y_test[0+32*k:32+32*k]).to(device)
             attack = fb.attacks.FGSM()
-            model_name='VGG'
             epsilon=0.03
             attackname="FGSM"
-            filepath='./temp'
+            filepath=opt.output+'/temp'
             filepath2=opt.output+'/test'
             raw, clipped, is_adv = attack(fmodel,X_test,y_test, epsilons=epsilon)
             for i in range(32):
@@ -87,7 +89,7 @@ if __name__ == '__main__':
                 plt.figure(figsize = (2,2))
                 plt.imshow((clipped[i]-X_test[i]).cpu().permute(1,2,0));
                 plt.axis('off')
-                plt.savefig('./per'+str(i+32*k)+'.jpg', dpi=150,bbox_inches='tight', pad_inches=0)
+                plt.savefig(filepath+'/per'+str(i+32*k)+'.jpg', dpi=150,bbox_inches='tight', pad_inches=0)
             for i in range(32):
                 img_c1=cv2.imread(os.path.join(filepath,'per'+str(i+32*k)+'.jpg'), 0)
                 img_c2 = np.fft.fft2(img_c1)
@@ -106,10 +108,9 @@ if __name__ == '__main__':
             # y_test=np.argmax(y_test1, axis=1)
             # y_test=torch.from_numpy(y_test[0+32*k:32+32*k]).to(device)
             attack = fb.attacks.FGSM()
-            model_name='VGG'
             epsilon=0.03
             attackname="FGSM"
-            filepath='./temp'
+            filepath=opt.output+'/temp'
             filepath2=opt.output+'/val'
             raw, clipped, is_adv = attack(fmodel,X_test,y_test, epsilons=epsilon)
             for i in range(32):
@@ -117,12 +118,12 @@ if __name__ == '__main__':
                 plt.figure(figsize = (2,2))
                 plt.imshow((clipped[i]-X_test[i]).cpu().permute(1,2,0));
                 plt.axis('off')
-                plt.savefig('./per'+str(i+32*k)+'.jpg', dpi=150,bbox_inches='tight', pad_inches=0)
+                plt.savefig(filepath+'/per'+str(i+32*k)+'.jpg', dpi=150,bbox_inches='tight', pad_inches=0)
             for i in range(32):
                 img_c1=cv2.imread(os.path.join(filepath,'per'+str(i+32*k)+'.jpg'), 0)
                 img_c2 = np.fft.fft2(img_c1)
                 img_c3 = np.fft.fftshift(img_c2)
-                cv2.imwrite(os.path.join(filepath2,'validation'+str(i+32*k)+'.jpg'),20*np.log(1+np.abs(img_c3)))
+                cv2.imwrite(os.path.join(filepath2,'test'+str(i+32*k)+'.jpg'),20*np.log(1+np.abs(img_c3)))
     if opt.type=='train' or opt.type=='all':
         os.mkdir(opt.output+'/train')
         for k in range(18,68):
@@ -135,10 +136,9 @@ if __name__ == '__main__':
             # y_test=np.argmax(y_test1, axis=1)
             # y_test=torch.from_numpy(y_test[0+32*k:32+32*k]).to(device)
             attack = fb.attacks.FGSM()
-            model_name='VGG'
             epsilon=0.03
             attackname="FGSM"
-            filepath='./temp'
+            filepath=opt.output+'/temp'
             filepath2=opt.output+'/train'
             raw, clipped, is_adv = attack(fmodel,X_test,y_test, epsilons=epsilon)
             for i in range(32):
@@ -146,9 +146,9 @@ if __name__ == '__main__':
                 plt.figure(figsize = (2,2))
                 plt.imshow((clipped[i]-X_test[i]).cpu().permute(1,2,0));
                 plt.axis('off')
-                plt.savefig('./per'+str(i+32*k)+'.jpg', dpi=150,bbox_inches='tight', pad_inches=0)
+                plt.savefig(filepath+'/per'+str(i+32*k)+'.jpg', dpi=150,bbox_inches='tight', pad_inches=0)
             for i in range(32):
                 img_c1=cv2.imread(os.path.join(filepath,'per'+str(i+32*k)+'.jpg'), 0)
                 img_c2 = np.fft.fft2(img_c1)
                 img_c3 = np.fft.fftshift(img_c2)
-                cv2.imwrite(os.path.join(filepath2,'train'+str(i+32*k)+'.jpg'),20*np.log(1+np.abs(img_c3)))                            
+                cv2.imwrite(os.path.join(filepath2,'test'+str(i+32*k)+'.jpg'),20*np.log(1+np.abs(img_c3)))                       
