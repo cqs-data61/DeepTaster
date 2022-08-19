@@ -32,9 +32,14 @@ $ python detection_classifier+generation.py --train train_data_path --val valida
 #### Attack
 
 ## Example
+You can generate TRACK-IP for imagenet dataset protection using open source models by following below commands.
+
+DFT image generation for victim models
+Note that output_directory must have subdirectory temp, test, train, val
 ```python
 $ pip install foolbox
-$ python dftgeneration.py --model Imagenet --architecture Resnet101 --type all --output output_directory1
-$ python dftgeneration.py --model Imagenet --architecture Vgg16 --type all --output output_directory2
-$ python dftgeneration.py --model Imagenet --architecture Densenet161 --type all --output output_directory3
+$ python dftgeneration.py --model Imagenet --architecture Resnet101 --type all --output output_directory
+$ python dftgeneration.py --model Imagenet --architecture Vgg16 --type all --output output_directory
+$ python dftgeneration.py --model Imagenet --architecture Densenet161 --type all --output output_directory
 ```
+Detection classifier generation
