@@ -19,6 +19,7 @@ import cv2
 import numpy as np
 import os
 import foolbox as fb
+import argparse
 
 parser = argparse.ArgumentParser(description='DFT image generation')
 parser.add_argument('--model', default='Imagenet', type=str, help='Imagenet for pretrained imagenet model or model path')
