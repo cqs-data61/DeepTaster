@@ -22,9 +22,9 @@ from torch.autograd import Variable
 
 parser = argparse.ArgumentParser(description='DFT image generation')
 parser.add_argument('--dataset', required=True, type=str, help='train dataset: cifar100, Imagenet')
-parser.add_argument('--imagenerpath', default="./", type=str, help='dataset path')
 parser.add_argument('--architecture', required=True, type=str, help='train architecture: Resnet101, Vgg16, Densenet161')
-parser.add_argument('--output', required=True, type=str, help='output images saved dir')
+parser.add_argument('--imagenetpath', default="./", type=str, help='dataset path')
+parser.add_argument('--output', required=True, type=str, help='output model saved dir')
 parser.add_argument('--random_seed', default=80, type=int, help='model initializaion random seed')
 
 #train function
