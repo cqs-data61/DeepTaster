@@ -6,12 +6,17 @@ Generate 7 models each of them is trained on patial dataset (10%, 30%, 50%, 70%,
 ```python
 $ python retrain_attack.py --dataset Imagenet --architecture Resnet101 --imagenetpath path_to_imagenet_dataset --output save_model_directory
 ```
+#### Fine-tuning attack
+Generate 4 models each of them is fine tuning model trained on patial dataset (100, 500, 1000, 2000 samples of target dataset)
 
-#### 
+CIFAR100 dataset cases
 ```python
-$ python 
+$ python fine_tuning.py --model victim_model_path --dataset cifar100 --output save_model_directory
 ```
-
+IMAGENET dataset cases
+```python
+$ python fine_tuning.py --dataset Imagenet --architecture Resnet101 --imagenetpath path_to_imagenet_dataset --output save_model_directory
+```
 
 
 #### Attack
