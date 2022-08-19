@@ -137,7 +137,7 @@ def train_model(vgg, criterion, optimizer, scheduler, num_epochs=10):
     print("Training completed in {:.0f}m {:.0f}s".format(elapsed_time // 60, elapsed_time % 60))
     print("Best acc: {:.4f}".format(best_acc))
     
-    model.load_state_dict(best_model_wts)
+    #model.load_state_dict(best_model_wts)
     return model
 
 #load model architecture
@@ -160,12 +160,12 @@ elif opt.dataset=='cifar100':
         model.fc=nn.Linear(in_dim,class_num)
     elif opt.architecture=='Vgg16':
         model = models.vgg16(pretrained=False)
-        for param in vgg16.features.parameters():
+        for param in model.features.parameters():
             param.require_grad = False
-        num_features = vgg16.classifier[6].in_features
-        features = list(vgg16.classifier.children())[:-1] 
+        num_features = model.classifier[6].in_features
+        features = list(model.classifier.children())[:-1] 
         features.extend([nn.Linear(num_features,100)])
-        vgg16.classifier = nn.Sequential(*features) 
+        model.classifier = nn.Sequential(*features) 
     elif opt.architecture=='Densenet161':
         model = models.densenet161(pretrained=False)
         num_ftrs = model.classifier.in_features
@@ -228,13 +228,13 @@ for size in [10,30,50,70,80,90,100]:
                     shuffle=True)
    
     model = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=50)
-    torch.save(model,  opt.output+'/'+architecture+str(size)+'_50.pt')
+    torch.save(model,  opt.output+'/'+opt.architecture+str(size)+'_50.pt')
 
     model = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=50)
-    torch.save(model,  opt.output+'/'+architecture+str(size)+'_100.pt')
+    torch.save(model,  opt.output+'/'+opt.architecture+str(size)+'_100.pt')
 
     model = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=50)
-    torch.save(model,  opt.output+'/'+architecture+str(size)+'_150.pt')
+    torch.save(model,  opt.output+'/'+opt.architecture+str(size)+'_150.pt')
 
     model = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=50)
-    torch.save(model,  opt.output+'/'+architecture+str(size)+'_200.pt')
+    torch.save(model,  opt.output+'/'+opt.architecture+str(size)+'_200.pt')
