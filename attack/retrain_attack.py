@@ -22,6 +22,7 @@ from torch.autograd import Variable
 
 parser = argparse.ArgumentParser(description='DFT image generation')
 parser.add_argument('--dataset', required=True, type=str, help='train dataset: cifar100, Imagenet')
+parser.add_argument('--imagenerpath', default="./", type=str, help='dataset path')
 parser.add_argument('--architecture', required=True, type=str, help='train architecture: Resnet101, Vgg16, Densenet161')
 parser.add_argument('--output', required=True, type=str, help='output images saved dir')
 parser.add_argument('--random_seed', default=80, type=int, help='model initializaion random seed')
@@ -197,12 +198,13 @@ if opt.dataset=='cifar100':
     )
 else if opt.dataset=='Imagenet':
     #load imagenet dataset
+    train_data = torchvision.datasets.ImageNet(opt.imagenetpath, split='train', download=None, transform=transform)
+    test_data = torchvision.datasets.ImageNet(opt.imagenetpath, split='val', download=None, transform=transform)
 
 #class uniform split      
 for size in [10,30,50,70,80,90,100]:
     train_len=len(train_data)
-    datasize=0.9
-    train_size=5000
+    datasize=size/100
     sss = StratifiedShuffleSplit(n_splits=1, test_size=datasize, random_state=opt.random_seed)
     indices = list(range(len(train_data)))
     y_test0 = [y for _, y in train_data]
