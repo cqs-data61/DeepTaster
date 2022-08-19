@@ -27,6 +27,8 @@ parser.add_argument('--imagenetpath', default="./", type=str, help='dataset path
 parser.add_argument('--output', required=True, type=str, help='output model saved dir')
 parser.add_argument('--random_seed', default=80, type=int, help='model initializaion random seed')
 
+opt = parser.parse_args()
+
 #train function
 def train_model(vgg, criterion, optimizer, scheduler, num_epochs=10):
     since = time.time()
@@ -196,7 +198,7 @@ if opt.dataset=='cifar100':
         train = False, 
         transform = transform
     )
-else if opt.dataset=='Imagenet':
+elif opt.dataset=='Imagenet':
     #load imagenet dataset
     train_data = torchvision.datasets.ImageNet(opt.imagenetpath, split='train', download=None, transform=transform)
     test_data = torchvision.datasets.ImageNet(opt.imagenetpath, split='val', download=None, transform=transform)
