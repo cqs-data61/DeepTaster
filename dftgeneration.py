@@ -66,9 +66,7 @@ if __name__ == '__main__':
     
     
     #DFT image generation
-    os.mkdir(opt.output+'/temp')
 if opt.type=='test' or opt.type=='all':
-        os.mkdir(opt.output+'/test')
         for k in range(9):
             X_test=torch.from_numpy(X_test1[0+32*k:32+32*k]).float().to(device)
             X_test=F.interpolate(X_test, size=(224, 224), mode='bicubic', align_corners=False)
@@ -94,10 +92,9 @@ if opt.type=='test' or opt.type=='all':
                 img_c1=cv2.imread(os.path.join(filepath,'per'+str(i+32*k)+'.jpg'), 0)
                 img_c2 = np.fft.fft2(img_c1)
                 img_c3 = np.fft.fftshift(img_c2)
-                cv2.imwrite(os.path.join(filepath2,'test'+str(i+32*k)+'.jpg'),20*np.log(1+np.abs(img_c3)))
+                cv2.imwrite(os.path.join(filepath2,opt.architecture+'test'+str(i+32*k)+'.jpg'),20*np.log(1+np.abs(img_c3)))
 
     if opt.type=='val' or opt.type=='all':
-        os.mkdir(opt.output+'/val')
         for k in range(9,18):
             X_test=torch.from_numpy(X_test1[0+32*k:32+32*k]).float().to(device)
             X_test=F.interpolate(X_test, size=(224, 224), mode='bicubic', align_corners=False)
@@ -123,9 +120,8 @@ if opt.type=='test' or opt.type=='all':
                 img_c1=cv2.imread(os.path.join(filepath,'per'+str(i+32*k)+'.jpg'), 0)
                 img_c2 = np.fft.fft2(img_c1)
                 img_c3 = np.fft.fftshift(img_c2)
-                cv2.imwrite(os.path.join(filepath2,'test'+str(i+32*k)+'.jpg'),20*np.log(1+np.abs(img_c3)))
+                cv2.imwrite(os.path.join(filepath2,opt.architecture+'val'+str(i+32*k)+'.jpg'),20*np.log(1+np.abs(img_c3)))
     if opt.type=='train' or opt.type=='all':
-        os.mkdir(opt.output+'/train')
         for k in range(18,68):
             X_test=torch.from_numpy(X_test1[0+32*k:32+32*k]).float().to(device)
             X_test=F.interpolate(X_test, size=(224, 224), mode='bicubic', align_corners=False)
@@ -151,4 +147,4 @@ if opt.type=='test' or opt.type=='all':
                 img_c1=cv2.imread(os.path.join(filepath,'per'+str(i+32*k)+'.jpg'), 0)
                 img_c2 = np.fft.fft2(img_c1)
                 img_c3 = np.fft.fftshift(img_c2)
-                cv2.imwrite(os.path.join(filepath2,'test'+str(i+32*k)+'.jpg'),20*np.log(1+np.abs(img_c3)))                       
+                cv2.imwrite(os.path.join(filepath2,opt.architecture+'train'+str(i+32*k)+'.jpg'),20*np.log(1+np.abs(img_c3)))                       
