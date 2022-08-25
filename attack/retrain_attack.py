@@ -182,11 +182,10 @@ exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
 
 
 #load dataset
-if opt.dataset=='cifar100':
-    transform = transforms.Compose(
+transform = transforms.Compose(
         [transforms.ToTensor(),
          transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
-
+if opt.dataset=='cifar100':
     train_data = datasets.CIFAR100(
         root = 'data',
         train = True,                         
