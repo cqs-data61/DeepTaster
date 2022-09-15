@@ -22,7 +22,7 @@ from torch.autograd import Variable
 
 parser = argparse.ArgumentParser(description='DFT image generation')
 parser.add_argument('--model', required=True, type=str, help='victim model path')
-parser.add_argument('--dataset', required=True, type=str, help='train dataset: cifar100, Imagenet')
+parser.add_argument('--dataset', required=True, type=str, help='train dataset: cifar100, Imagenet, MNIST')
 parser.add_argument('--architecture', required=True, type=str, help='train architecture: Resnet101, Vgg16, Densenet161')
 parser.add_argument('--imagenetpath', default="./", type=str, help='dataset path')
 parser.add_argument('--output', required=True, type=str, help='output model saved dir')
@@ -146,7 +146,7 @@ if opt.dataset=='Imagenet':
     elif opt.architecture=='Densenet161':
         model = models.densenet161(pretrained=True)
     model=model.to(device)
-elif opt.dataset=='cifar100':
+elif opt.dataset=='cifar100' or opt.dataset=='MNIST':
     model=torch.load(opt.model)
     model=model.to(device)
 else:
@@ -176,6 +176,24 @@ if opt.dataset=='cifar100':
         train = False, 
         transform = transform
     )
+elif opt.dataset=='MNIST':
+    transform = transforms.Compose(
+        [transforms.ToTensor(),
+         transforms.Lambda(lambda x: x.repeat(3, 1, 1) if x.size(0)==1 else x),
+         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+
+    train_data = datasets.MNIST(
+        root = 'data',
+        train = True,                         
+        transform = transform, 
+        download = True,            
+    )
+    test_data = datasets.MNIST(
+        root = 'data', 
+        train = False, 
+        transform = transform,
+        download = True,  
+    )
 elif opt.dataset=='Imagenet':
     #load imagenet dataset
     train_data = torchvision.datasets.ImageNet(opt.imagenetpath, split='train', download=None, transform=transform)
@@ -184,7 +202,7 @@ elif opt.dataset=='Imagenet':
 #class uniform split      
 for size in [100,500,1000,2500]:
     train_len=len(train_data)
-    datasize=size/50000
+    datasize=size/train_len
     sss = StratifiedShuffleSplit(n_splits=1, test_size=datasize, random_state=opt.random_seed)
     indices = list(range(len(train_data)))
     y_test0 = [y for _, y in train_data]
