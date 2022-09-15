@@ -163,10 +163,6 @@ def train_model(vgg, criterion, optimizer, scheduler, num_epochs=10):
             if i % 100 == 0:
                 print("\rTraining batch {}/{}".format(i, train_batches / 2), end='', flush=True)
                 
-            # Use half training dataset
-            if i >= train_batches / 2:
-                break
-                
             inputs, labels = data
             
             inputs, labels = Variable(inputs.cuda()), Variable(labels.cuda())
