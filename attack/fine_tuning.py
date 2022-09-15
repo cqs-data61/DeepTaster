@@ -79,8 +79,8 @@ def train_model(vgg, criterion, optimizer, scheduler, num_epochs=10):
             del inputs, labels, outputs, preds
             torch.cuda.empty_cache()
 
-        avg_loss = loss_train / len(train_data)
-        avg_acc = acc_train / len(train_data)
+        avg_loss = loss_train / len(train_loader.dataset)
+        avg_acc = acc_train / len(train_loader.dataset)
         
         
         print()
@@ -112,8 +112,8 @@ def train_model(vgg, criterion, optimizer, scheduler, num_epochs=10):
             del inputs, labels, outputs, preds
             torch.cuda.empty_cache()
         
-        avg_loss_val = loss_val / len(test_data)
-        avg_acc_val = acc_val / len(test_data)
+        avg_loss_val = loss_val / len(test_loader.dataset)
+        avg_acc_val = acc_val / len(test_loader.dataset)
         
         print()
         print("Epoch {} result: ".format(epoch))
