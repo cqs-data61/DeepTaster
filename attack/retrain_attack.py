@@ -176,10 +176,11 @@ exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
 
 
 #load dataset
-transform = transforms.Compose(
+if opt.dataset=='cifar100':
+    transform = transforms.Compose(
         [transforms.ToTensor(),
          transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
-if opt.dataset=='cifar100':
+
     train_data = datasets.CIFAR100(
         root = 'data',
         train = True,                         
@@ -190,6 +191,24 @@ if opt.dataset=='cifar100':
         root = 'data', 
         train = False, 
         transform = transform
+    )
+elif opt.dataset=='MNIST':
+    transform = transforms.Compose(
+        [transforms.ToTensor(),
+         transforms.Lambda(lambda x: x.repeat(3, 1, 1) if x.size(0)==1 else x),
+         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+
+    train_data = datasets.MNIST(
+        root = 'data',
+        train = True,                         
+        transform = transform, 
+        download = True,            
+    )
+    test_data = datasets.MNIST(
+        root = 'data', 
+        train = False, 
+        transform = transform,
+        download = True,  
     )
 elif opt.dataset=='Imagenet':
     #load imagenet dataset
