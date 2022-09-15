@@ -202,7 +202,7 @@ elif opt.dataset=='Imagenet':
 #class uniform split      
 for size in [100,500,1000,2500]:
     train_len=len(train_data)
-    datasize=size/train_len
+    datasize=size/100
     sss = StratifiedShuffleSplit(n_splits=1, test_size=datasize, random_state=opt.random_seed)
     indices = list(range(len(train_data)))
     y_test0 = [y for _, y in train_data]
