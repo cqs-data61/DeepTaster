@@ -24,6 +24,19 @@ model.fc=nn.Linear(in_dim,class_num)
 model=model.to(device)
 
 
+model1 = models.densenet161(pretrained=False)
+num_ftrs = model1.classifier.in_features
+model1.classifier = nn.Linear(num_ftrs, 100)
+# model.features.conv0.apply(squeeze_weights)
+model1 = model1.to(device)
+
+model2 = models.vgg16(pretrained=False)
+num_features = model2.classifier[6].in_features
+features = list(model2.classifier.children())[:-1] # Remove last layer
+features.extend([nn.Linear(num_features,100)]) # Add our layer with 4 outputs
+model2.classifier = nn.Sequential(*features) # Replace the model classifier
+model2=model2.to(device)
+
 from torch.optim import lr_scheduler
 criterion = nn.CrossEntropyLoss()
 
@@ -217,17 +230,54 @@ def train_model(vgg, criterion, optimizer, scheduler, num_epochs=10):
 
 
 resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  '~/model/resent20.pt')
+torch.save(resnet18,  './model/resent20.pt')
 
 resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  '~/model/resent40.pt')
+torch.save(resnet18,  './model/resent40.pt')
 
 resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  '~/model/resent60.pt')
+torch.save(resnet18,  './model/resent60.pt')
 
 resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  '~/model/resent80.pt')
+torch.save(resnet18,  './model/resent80.pt')
 
 resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  '~/model/resent100.pt')
+torch.save(resnet18,  './model/resent100.pt')
+
+
+optimizer_ft = optim.SGD(model1.parameters(), lr=0.01, momentum=0.9, weight_decay=5e-4)
+exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
+
+resnet18 = train_model(model1, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+torch.save(resnet18,  './model/densenet20.pt')
+
+resnet18 = train_model(model1, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+torch.save(resnet18,  './model/densenet40.pt')
+
+resnet18 = train_model(model1, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+torch.save(resnet18,  './model/densenet60.pt')
+
+resnet18 = train_model(model1, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+torch.save(resnet18,  './model/densenet80.pt')
+
+resnet18 = train_model(model1, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+torch.save(resnet18,  './model/densenet100.pt')
+
+optimizer_ft = optim.SGD(model2.parameters(), lr=0.01, momentum=0.9, weight_decay=5e-4)
+exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
+
+resnet18 = train_model(model2, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+torch.save(resnet18,  './model/vgg20.pt')
+
+resnet18 = train_model(model2, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+torch.save(resnet18,  './model/vgg40.pt')
+
+resnet18 = train_model(model2, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+torch.save(resnet18,  './model/vgg60.pt')
+
+resnet18 = train_model(model2, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+torch.save(resnet18,  './model/vgg80.pt')
+
+resnet18 = train_model(model2, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+torch.save(resnet18,  './model/vgg100.pt')
 
