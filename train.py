@@ -1,4 +1,4 @@
-!pip3 install foolbox==3.1.1
+
 
 import torchvision.models as models
 import torch
