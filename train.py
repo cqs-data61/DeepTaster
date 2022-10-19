@@ -9,6 +9,7 @@ import torchvision.datasets as datasets
 import torchvision.transforms as transforms
 from torchvision.transforms import ToTensor 
 from torch import nn
+import os
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -43,13 +44,6 @@ criterion = nn.CrossEntropyLoss()
 optimizer_ft = optim.SGD(model.parameters(), lr=0.01, momentum=0.9, weight_decay=5e-4)
 exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
 
-#get tiny_imagenet dataset
-#for a first time
-# %cd /content/drive/MyDrive/Watermark_dnn/tiny_imagenet
-# !wget http://cs231n.stanford.edu/tiny-imagenet-200.zip
-  
-# # Unzip raw zip file
-# !unzip -qq 'tiny-imagenet-200.zip'
 
 
 
@@ -280,4 +274,170 @@ torch.save(resnet18,  './model/vgg80.pt')
 
 resnet18 = train_model(model2, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
 torch.save(resnet18,  './model/vgg100.pt')
+
+
+
+
+#retraining attack
+torch.manual_seed(105)
+os.mkdir('./retrain_model')
+datasize_list=['10','20','30','40','50','60','70','80','90','100']
+datasize1=[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]
+for i in range(10):
+  model = models.resnet18(pretrained=False)
+  class_num=100
+  fc=model.fc
+  in_dim = fc.in_features
+  model.fc=nn.Linear(in_dim,class_num)
+  model=model.to(device)
+
+  optimizer_ft = optim.SGD(model.parameters(), lr=0.01, momentum=0.9, weight_decay=5e-4)
+  exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
+  if datasize1[i]!=1:
+    datasize=datasize1[i]
+
+    sss = StratifiedShuffleSplit(n_splits=1, test_size=datasize, random_state=1)
+    indices = list(range(len(train_data)))
+    y_test0 = [y for _, y in train_data]
+
+    for test_index, val_index in sss.split(indices, y_test0):
+        print('test:', test_index, 'val:', val_index)
+        print(len(val_index), len(test_index))
+
+    from torch.utils.data import Subset
+
+    val_ds = Subset(train_data, val_index)
+    test_ds = Subset(train_data, test_index)
+
+
+
+    batch_size = 128
+    train_loader = torch.utils.data.DataLoader(
+                    dataset=val_ds,
+                    batch_size=batch_size,
+                    shuffle=True)
+  else:
+      train_loader = torch.utils.data.DataLoader(
+                  dataset=train_data,
+                  batch_size=batch_size,
+                  shuffle=True)
+  test_loader = torch.utils.data.DataLoader(
+                  dataset=test_data,
+                  batch_size=batch_size,
+                  shuffle=True)
+
+
+  resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+  torch.save(resnet18,  './retrain_model/resent'+datasize_list[i]+'_20.pt')
+
+  resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+  torch.save(resnet18,  './retrain_model/resent'+datasize_list[i]+'_40.pt')
+
+  resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+  torch.save(resnet18,  './retrain_model/resent'+datasize_list[i]+'_60.pt')
+
+  resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+  torch.save(resnet18,  './retrain_model/resent'+datasize_list[i]+'_80.pt')
+
+  resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+  torch.save(resnet18,  './retrain_model/resent'+datasize_list[i]+'_100.pt')
+
+ 
+#finetuning attack
+os.mkdir('./fine_model')
+datasize_list=['100','500','1000','2500']
+datasize1=[0.002,0.01,0.02,0.05]
+for i in range(4):
+  model = torch.load('./model/resnet100.pt')
+  model=model.to(device)
+
+  optimizer_ft = optim.SGD(model.parameters(), lr=0.00005, momentum=0.9, weight_decay=5e-4)
+  exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
+  if datasize1[i]!=1:
+    datasize=datasize1[i]
+
+    sss = StratifiedShuffleSplit(n_splits=1, test_size=datasize, random_state=1)
+    indices = list(range(len(train_data)))
+    y_test0 = [y for _, y in train_data]
+
+    for test_index, val_index in sss.split(indices, y_test0):
+        print('test:', test_index, 'val:', val_index)
+        print(len(val_index), len(test_index))
+
+    from torch.utils.data import Subset
+
+    val_ds = Subset(train_data, val_index)
+    test_ds = Subset(train_data, test_index)
+
+
+
+    batch_size = 128
+    train_loader = torch.utils.data.DataLoader(
+                    dataset=val_ds,
+                    batch_size=batch_size,
+                    shuffle=True)
+  else:
+      train_loader = torch.utils.data.DataLoader(
+                  dataset=train_data,
+                  batch_size=batch_size,
+                  shuffle=True)
+  test_loader = torch.utils.data.DataLoader(
+                  dataset=test_data,
+                  batch_size=batch_size,
+                  shuffle=True)
+
+  resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=1)
+  torch.save(resnet18,  './fine_model/resent'+datasize_list[i]+'_1.pt')
+  
+  resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=19)
+  torch.save(resnet18,  './fine_model/resent'+datasize_list[i]+'_20.pt')
+
+  resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+  torch.save(resnet18,  './fine_model/resent'+datasize_list[i]+'_40.pt')
+
+  resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+  torch.save(resnet18,  './fine_model/resent'+datasize_list[i]+'_60.pt')
+
+  resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+  torch.save(resnet18,  './fine_model/resent'+datasize_list[i]+'_80.pt')
+
+  resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+  torch.save(resnet18,  './fine_model/resent'+datasize_list[i]+'_100.pt')
+  
+  
+#prune attack
+os.mkdir('./prune_model')
+model = torch.load('./model/resnet100.pt')
+model=model.to(device)
+
+amount_list=[0.2,0.4,0.6]
+for i in range(3):
+  amount=amount_list[i]
+  import torch.nn.utils.prune as prune
+  for name, module in model.named_modules():
+      # prune 20% of connections in all 2D-conv layers
+      if isinstance(module, torch.nn.Conv2d):
+          prune.l1_unstructured(module, name='weight', amount=amount)
+      # prune 40% of connections in all linear layers
+      elif isinstance(module, torch.nn.Linear):
+          prune.l1_unstructured(module, name='weight', amount=amount)
+      elif isinstance(module, torch.nn.BatchNorm2d):
+          prune.l1_unstructured(module, name='weight', amount=amount)
+
+  optimizer_ft = optim.SGD(model.parameters(), lr=0.00005, momentum=0.9, weight_decay=5e-4)
+  exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
+
+  batch_size = 128
+  train_loader = torch.utils.data.DataLoader(
+                   dataset=train_data,
+                   batch_size=batch_size,
+                   shuffle=True)
+  test_loader = torch.utils.data.DataLoader(
+                  dataset=test_data,
+                  batch_size=batch_size,
+                  shuffle=True)
+
+  resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+  torch.save(resnet18,  './prune_model/resent'+amount_list[i]+'.pt')
+ 
 
