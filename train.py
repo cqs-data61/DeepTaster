@@ -17,6 +17,8 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 #set random seed number for victim models
 torch.manual_seed(107)
 
+os.mkdir("./tiny_imagenet")
+
 model = models.resnet18(pretrained=False)
 class_num=100
 fc=model.fc
@@ -214,65 +216,65 @@ def train_model(vgg, criterion, optimizer, scheduler, num_epochs=10):
     return vgg
 
 
+os.mkdir("./tiny_imagenet/model")
+resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
+torch.save(resnet18,  './tiny_imagenet/model/resent20.pt')
 
 resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  './model/resent20.pt')
+torch.save(resnet18,  './tiny_imagenet/model/resent40.pt')
 
 resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  './model/resent40.pt')
+torch.save(resnet18,  './tiny_imagenet/model/resent60.pt')
 
 resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  './model/resent60.pt')
+torch.save(resnet18,  './tiny_imagenet/model/resent80.pt')
 
 resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  './model/resent80.pt')
-
-resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  './model/resent100.pt')
+torch.save(resnet18,  './tiny_imagenet/model/resent100.pt')
 
 
 optimizer_ft = optim.SGD(model1.parameters(), lr=0.01, momentum=0.9, weight_decay=5e-4)
 exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
 
 resnet18 = train_model(model1, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  './model/densenet20.pt')
+torch.save(resnet18,  './tiny_imagenet/model/densenet20.pt')
 
 resnet18 = train_model(model1, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  './model/densenet40.pt')
+torch.save(resnet18,  './tiny_imagenet/model/densenet40.pt')
 
 resnet18 = train_model(model1, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  './model/densenet60.pt')
+torch.save(resnet18,  './tiny_imagenet/model/densenet60.pt')
 
 resnet18 = train_model(model1, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  './model/densenet80.pt')
+torch.save(resnet18,  './tiny_imagenet/model/densenet80.pt')
 
 resnet18 = train_model(model1, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  './model/densenet100.pt')
+torch.save(resnet18,  './tiny_imagenet/model/densenet100.pt')
 
 optimizer_ft = optim.SGD(model2.parameters(), lr=0.01, momentum=0.9, weight_decay=5e-4)
 exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
 
 resnet18 = train_model(model2, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  './model/vgg20.pt')
+torch.save(resnet18,  './tiny_imagenet/model/vgg20.pt')
 
 resnet18 = train_model(model2, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  './model/vgg40.pt')
+torch.save(resnet18,  './tiny_imagenet/model/vgg40.pt')
 
 resnet18 = train_model(model2, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  './model/vgg60.pt')
+torch.save(resnet18,  './tiny_imagenet/model/vgg60.pt')
 
 resnet18 = train_model(model2, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  './model/vgg80.pt')
+torch.save(resnet18,  './tiny_imagenet/model/vgg80.pt')
 
 resnet18 = train_model(model2, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-torch.save(resnet18,  './model/vgg100.pt')
+torch.save(resnet18,  './tiny_imagenet/model/vgg100.pt')
 
 
 
 
 #retraining attack
 torch.manual_seed(105)
-os.mkdir('./retrain_model')
+os.mkdir('./tiny_imagenet/retrain_model')
 datasize_list=['10','20','30','40','50','60','70','80','90','100']
 datasize1=[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]
 for i in range(10):
@@ -320,27 +322,27 @@ for i in range(10):
 
 
   resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-  torch.save(resnet18,  './retrain_model/resent'+datasize_list[i]+'_20.pt')
+  torch.save(resnet18,  './tiny_imagenet/retrain_model/resent'+datasize_list[i]+'_20.pt')
 
   resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-  torch.save(resnet18,  './retrain_model/resent'+datasize_list[i]+'_40.pt')
+  torch.save(resnet18,  './tiny_imagenet/retrain_model/resent'+datasize_list[i]+'_40.pt')
 
   resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-  torch.save(resnet18,  './retrain_model/resent'+datasize_list[i]+'_60.pt')
+  torch.save(resnet18,  './tiny_imagenet/retrain_model/resent'+datasize_list[i]+'_60.pt')
 
   resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-  torch.save(resnet18,  './retrain_model/resent'+datasize_list[i]+'_80.pt')
+  torch.save(resnet18,  './tiny_imagenet/retrain_model/resent'+datasize_list[i]+'_80.pt')
 
   resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-  torch.save(resnet18,  './retrain_model/resent'+datasize_list[i]+'_100.pt')
+  torch.save(resnet18,  './tiny_imagenet/retrain_model/resent'+datasize_list[i]+'_100.pt')
 
  
 #finetuning attack
-os.mkdir('./fine_model')
+os.mkdir('./tiny_imagenet/fine_model')
 datasize_list=['100','500','1000','2500']
 datasize1=[0.002,0.01,0.02,0.05]
 for i in range(4):
-  model = torch.load('./model/resnet100.pt')
+  model = torch.load('./tiny_imagenet/model/resnet100.pt')
   model=model.to(device)
 
   optimizer_ft = optim.SGD(model.parameters(), lr=0.00005, momentum=0.9, weight_decay=5e-4)
@@ -379,27 +381,27 @@ for i in range(4):
                   shuffle=True)
 
   resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=1)
-  torch.save(resnet18,  './fine_model/resent'+datasize_list[i]+'_1.pt')
+  torch.save(resnet18,  './tiny_imagenet/fine_model/resent'+datasize_list[i]+'_1.pt')
   
   resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=19)
-  torch.save(resnet18,  './fine_model/resent'+datasize_list[i]+'_20.pt')
+  torch.save(resnet18,  './tiny_imagenet/fine_model/resent'+datasize_list[i]+'_20.pt')
 
   resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-  torch.save(resnet18,  './fine_model/resent'+datasize_list[i]+'_40.pt')
+  torch.save(resnet18,  './tiny_imagenet/fine_model/resent'+datasize_list[i]+'_40.pt')
 
   resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-  torch.save(resnet18,  './fine_model/resent'+datasize_list[i]+'_60.pt')
+  torch.save(resnet18,  './tiny_imagenet/fine_model/resent'+datasize_list[i]+'_60.pt')
 
   resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-  torch.save(resnet18,  './fine_model/resent'+datasize_list[i]+'_80.pt')
+  torch.save(resnet18,  './tiny_imagenet/fine_model/resent'+datasize_list[i]+'_80.pt')
 
   resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-  torch.save(resnet18,  './fine_model/resent'+datasize_list[i]+'_100.pt')
+  torch.save(resnet18,  './tiny_imagenet/fine_model/resent'+datasize_list[i]+'_100.pt')
   
   
 #prune attack
-os.mkdir('./prune_model')
-model = torch.load('./model/resnet100.pt')
+os.mkdir('./tiny_imagenet/prune_model')
+model = torch.load('./tiny_imagenet/model/resnet100.pt')
 model=model.to(device)
 
 amount_list=[0.2,0.4,0.6]
@@ -430,6 +432,6 @@ for i in range(3):
                   shuffle=True)
 
   resnet18 = train_model(model, criterion, optimizer_ft, exp_lr_scheduler, num_epochs=20)
-  torch.save(resnet18,  './prune_model/resent'+amount_list[i]+'.pt')
+  torch.save(resnet18,  './tiny_imagenet/prune_model/resent'+amount_list[i]+'.pt')
  
 
