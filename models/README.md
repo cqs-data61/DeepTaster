@@ -1,6 +1,1 @@
-## Pretrained models
-
-Resnet
-VGG
-Densenet
-add table of accuracy
+target victim models and three meta-classifiers
