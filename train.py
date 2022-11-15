@@ -11,19 +11,18 @@ from torchvision.transforms import ToTensor
 from torch import nn
 import os
 
+#set gpu
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-
-
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+#set random seed number for victim models
 torch.manual_seed(107)
+
 model = models.resnet18(pretrained=False)
 class_num=100
 fc=model.fc
 in_dim = fc.in_features
 model.fc=nn.Linear(in_dim,class_num)
 model=model.to(device)
-
 
 model1 = models.densenet161(pretrained=False)
 num_ftrs = model1.classifier.in_features
@@ -47,7 +46,7 @@ exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
 
 
 
-# tiny imagenet
+# get tiny imagenet
 import torch
 from torch import optim, nn
 from torch.utils.data import DataLoader, TensorDataset, Dataset
@@ -136,14 +135,7 @@ def train_model(vgg, criterion, optimizer, scheduler, num_epochs=10):
         for i, data in enumerate(train_loader):
             if i % 100 == 0:
                 print("\rTraining batch {}/{}".format(i, train_batches / 2), end='', flush=True)
-                
-            # Use half training dataset
-            # if i >= train_batches / 2:
-            #     break
-        # for i, data in enumerate(train_loader):
-        #     if i % 100 == 0:
-        #         print("\rTraining batch {}/{}".format(i, train_batches), end='', flush=True)
-                  
+
             inputs, labels = data
 
             inputs, labels = Variable(inputs.cuda()), Variable(labels.cuda())
