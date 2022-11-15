@@ -13,3 +13,5 @@
 |Tiny-ImageNet|VGG16|36.20%|
 |Tiny-ImageNet|ResNet18|40.00%|
 |Tiny-ImageNet|DenseNet161|51.12%|
+
+All victim models are available in https://drive.google.com/drive/folders/1hWS5VssqjE0284YfL4mI9wJSTHyNsuN3?usp=share_link
