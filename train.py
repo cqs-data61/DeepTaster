@@ -82,7 +82,7 @@ transform = transforms.Compose(
     [transforms.ToTensor(),
      transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
 
-DATA_DIR = './tiny_imagenet_200' # Original images come in shapes of [3,64,64]
+DATA_DIR = './tiny-imagenet-200' # Original images come in shapes of [3,64,64]
 
 # Define training and validation data paths
 TRAIN_DIR = os.path.join(DATA_DIR, 'train') 
