@@ -1,10 +1,11 @@
 ## Prerequisite
-We use foolbox, adversarial attack tool
+Insatall foolbox, adversarial attack tool
+Download tiny-imagenet
 
 ```python
 $ pip install foolbox
-$ wget http://cs231n.stanford.edu/tiny-imagenet-200.zip
-$ unzip -qq 'tiny-imagenet-200.zip'
+$ chmod 755 download_tiny_imagenet.sh
+$ ./download_tiny_imagenet.sh
 ```
 ## Files
 Files
