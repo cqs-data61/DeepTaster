@@ -21,6 +21,6 @@ rm -r n03255*
 find ./ -type d -exec mkdir -p "$1/tiny-imagenet-200/val2/{}" \;
 cd ..
 cd ..
-python temp.py
+python generate_100classes.py
 mv ./tiny-imagenet-200/val ./tiny-imagenet-200/val_original
 mv ./tiny-imagenet-200/val2 ./tiny-imagenet-200/val
