@@ -4,7 +4,7 @@ Download tiny-imagenet
 
 ```python
 $ pip install foolbox
-$ chmod 755 download_tiny_imagenet.sh
+$ chmod 755 download_tiny_imagenet.sh /home_directory_path/TRACK-IP/
 $ ./download_tiny_imagenet.sh
 ```
 ## Files
