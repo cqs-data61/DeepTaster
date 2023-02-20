@@ -47,9 +47,13 @@ DFT image generation for victim models
 Note that output_directory must have subdirectory temp, test, train, val
 ```python
 $ pip install foolbox
-$ python dftgeneration.py --model Imagenet --architecture Resnet101 --type all --output output_directory
-$ python dftgeneration.py --model Imagenet --architecture Vgg16 --type all --output output_directory
-$ python dftgeneration.py --model Imagenet --architecture Densenet161 --type all --output output_directory
-$ python detection_classifier_generation.py --train output_directory/train/ --val output_directory/val/ --output classifier_saved_directory
+$ python train.py --dataset cifar10 --architecture Resnet18
+$ python train.py --dataset cifar10 --architecture Vgg16
+$ python train.py --dataset cifar10 --architecture Densenet161
+$ python dftgeneration.py --model ./cifar10/model/Resnet101_50.pt --architecture Resnet101 --type all 
+$ python dftgeneration.py --model ./cifar10/model/Vgg16_50.pt --architecture Vgg16 --type all
+$ python dftgeneration.py --model ./cifar10/model/Densenet161_50.pt --architecture Densenet161 --type all
+$ python detection_classifier_generation.py --train ./DFTimages/train/ --val ./DFTimages/val/ --output ./classifier_output
+$ python evaluation.py 
 ```
 Detection classifier generation
