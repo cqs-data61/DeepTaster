@@ -1,4 +1,3 @@
-
 """
 Detection Classifier Generation
 """
@@ -16,6 +15,7 @@ from PIL import Image
 from sklearn.metrics import roc_auc_score
 import torchvision.datasets as dset
 from deepsvdd import DeepSVDD_network, pretrain_autoencoder, TrainerDeepSVDD
+import os
 
 parser = argparse.ArgumentParser(description='DFT image generation')
 parser.add_argument('--train', required=True, type=str, help='train dataset path')
@@ -110,11 +110,12 @@ if __name__ == '__main__':
       for x, y in val_dataloader:
           x = x.float().to(device)
           z = net(x)
-          score = torch.sum((z - c) ** 2, dim=1)
+          score = torch.sum((z - c) ** 2, dim=1).cpu()
           for i in range(16):
             scores.append(score[i])
-  print(np.mean(scores),np.std(scores))
+  scores.sort()
+  num_validation=len(os.listdir(opt.val))
 
-  torch.save(net, opt.output+'/deepsvdd.th')                  
-                    
-                  
+  threshold=scores[round(num_validation*0.96)]
+  print("threshold: ", threshold)
+  torch.save(net, opt.output+'/deepsvdd.th')  
