@@ -115,7 +115,9 @@ if __name__ == '__main__':
             scores.append(score[i])
   scores.sort()
   num_validation=len(os.listdir(opt.val))
-
   threshold=scores[round(num_validation*0.96)]
-  print("threshold: ", threshold)
-  torch.save(net, opt.output+'/deepsvdd.th')  
+  print("threshold: ", threshold.to(torch.float))
+  threshold_file=open(opt.output+'/threshold.txt','w')
+  threshold_file.write(str(float(threshold)))
+  threshold_file.close()
+  torch.save(net, opt.output+'/deepsvdd.th') 
