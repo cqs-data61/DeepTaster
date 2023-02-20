@@ -20,7 +20,7 @@ Reference:
 
 #### target model Generation
 ```python
-$ python train.py --dataset cifar10 -- architecture Resnet18
+$ python train.py --dataset cifar10 --architecture Resnet18
 ```
 
 #### DFT images Generation
