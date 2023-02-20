@@ -24,6 +24,7 @@ import argparse
 parser = argparse.ArgumentParser(description='DFT image generation')
 parser.add_argument('--model', default='Imagenet', type=str, help='Imagenet for pretrained imagenet model or model path')
 parser.add_argument('--architecture', default='Resnet101', type=str, help='model architecture: Resnet18, Vgg16, Densenet161, Alexnet')
+parser.add_argument('--label', type=str, help='model label')
 #parser.add_argument('--dataset', default='cifar100', type=str, help='dataset for DFT image ganeration')
 parser.add_argument('--type', default='all', type=str, help='type of DFT images: all/test/val/train')
 parser.add_argument('--output', default='./DFTimages', type=str, help='DFT images saved dir')
@@ -83,11 +84,15 @@ if __name__ == '__main__':
             epsilon=0.03
             attackname="FGSM"
             filepath=opt.output+'/temp'
-            filepath2=opt.output+'/test'
+            filepath_test = opt.output + '/test'
+            filepath2=opt.output+'/test/'+opt.label
+
             if not os.path.exists(filepath):
                 os.mkdir(filepath)
+            if not os.path.exists(filepath_test):
+                os.mkdir(filepath_test)
             if not os.path.exists(filepath2):
-                os.mkdir(filepath2)
+                os.mkdir(filepath2)    
             raw, clipped, is_adv = attack(fmodel,X_test,y_test, epsilons=epsilon)
             for i in range(32):
                 plt.figure(num=None, figsize=(4,3), dpi=150)
@@ -115,9 +120,13 @@ if __name__ == '__main__':
             epsilon=0.03
             attackname="FGSM"
             filepath=opt.output+'/temp'
-            filepath2=opt.output+'/val'
+            filepath_val=opt.output+'/val'
+            filepath2=opt.output+'/val/'+opt.label
+
             if not os.path.exists(filepath):
                 os.mkdir(filepath)
+            if not os.path.exists(filepath_val):
+                os.mkdir(filepath_val)
             if not os.path.exists(filepath2):
                 os.mkdir(filepath2)
             raw, clipped, is_adv = attack(fmodel,X_test,y_test, epsilons=epsilon)
@@ -146,9 +155,12 @@ if __name__ == '__main__':
             epsilon=0.03
             attackname="FGSM"
             filepath=opt.output+'/temp'
-            filepath2=opt.output+'/train'
+            filepath_train=opt.output+'/train'
+            filepath2=opt.output+'/train/'+opt.label
             if not os.path.exists(filepath):
                 os.mkdir(filepath)
+            if not os.path.exists(filepath_train):
+                os.mkdir(filepath_train)
             if not os.path.exists(filepath2):
                 os.mkdir(filepath2)
             raw, clipped, is_adv = attack(fmodel,X_test,y_test, epsilons=epsilon)
