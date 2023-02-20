@@ -23,9 +23,9 @@ import argparse
 
 parser = argparse.ArgumentParser(description='DFT image generation')
 parser.add_argument('--model', default='Imagenet', type=str, help='Imagenet for pretrained imagenet model or model path')
-parser.add_argument('--architecture', default='Resnet101', type=str, help='model architecture')
+parser.add_argument('--architecture', default='Resnet101', type=str, help='model architecture: Resnet18, Vgg16, Densenet161, Alexnet')
 #parser.add_argument('--dataset', default='cifar100', type=str, help='dataset for DFT image ganeration')
-parser.add_argument('--type', default='all', type=str, help='type of DFT images. choice: all/test/val/train')
+parser.add_argument('--type', default='all', type=str, help='type of DFT images: all/test/val/train')
 parser.add_argument('--output', default='./DFTimages', type=str, help='DFT images saved dir')
 
 
@@ -42,6 +42,8 @@ if __name__ == '__main__':
             model=models.resnet101(pretrained=True)
         elif opt.architecture == 'Densenet161':
             model=models.densenet161(pretrained=True)
+        elif opt.architecture == 'Alexnet':
+            model=models.Alexnet(pretrained=True)
         elif opt.architecture == 'Vgg16':
             model=models.vgg16(pretrained=True)
     else:
@@ -49,7 +51,8 @@ if __name__ == '__main__':
         model = model.to(device)
     model.eval()
 
-
+    if not os.path.exists(opt.output):
+        os.mkdir(opt.output)
     #load dataset
 
     (X_train, y_train), (X_test1, y_test1) = cifar100.load_data()
@@ -65,8 +68,8 @@ if __name__ == '__main__':
     
     
     
-    #DFT image generation
-if opt.type=='test' or opt.type=='all':
+        #DFT image generation
+    if opt.type=='test' or opt.type=='all':
         for k in range(9):
             X_test=torch.from_numpy(X_test1[0+32*k:32+32*k]).float().to(device)
             X_test=F.interpolate(X_test, size=(224, 224), mode='bicubic', align_corners=False)
@@ -81,6 +84,10 @@ if opt.type=='test' or opt.type=='all':
             attackname="FGSM"
             filepath=opt.output+'/temp'
             filepath2=opt.output+'/test'
+            if not os.path.exists(filepath):
+                os.mkdir(filepath)
+            if not os.path.exists(filepath2):
+                os.mkdir(filepath2)
             raw, clipped, is_adv = attack(fmodel,X_test,y_test, epsilons=epsilon)
             for i in range(32):
                 plt.figure(num=None, figsize=(4,3), dpi=150)
@@ -109,6 +116,10 @@ if opt.type=='test' or opt.type=='all':
             attackname="FGSM"
             filepath=opt.output+'/temp'
             filepath2=opt.output+'/val'
+            if not os.path.exists(filepath):
+                os.mkdir(filepath)
+            if not os.path.exists(filepath2):
+                os.mkdir(filepath2)
             raw, clipped, is_adv = attack(fmodel,X_test,y_test, epsilons=epsilon)
             for i in range(32):
                 plt.figure(num=None, figsize=(4,3), dpi=150)
@@ -136,6 +147,10 @@ if opt.type=='test' or opt.type=='all':
             attackname="FGSM"
             filepath=opt.output+'/temp'
             filepath2=opt.output+'/train'
+            if not os.path.exists(filepath):
+                os.mkdir(filepath)
+            if not os.path.exists(filepath2):
+                os.mkdir(filepath2)
             raw, clipped, is_adv = attack(fmodel,X_test,y_test, epsilons=epsilon)
             for i in range(32):
                 plt.figure(num=None, figsize=(4,3), dpi=150)
@@ -147,4 +162,4 @@ if opt.type=='test' or opt.type=='all':
                 img_c1=cv2.imread(os.path.join(filepath,'per'+str(i+32*k)+'.jpg'), 0)
                 img_c2 = np.fft.fft2(img_c1)
                 img_c3 = np.fft.fftshift(img_c2)
-                cv2.imwrite(os.path.join(filepath2,opt.architecture+'train'+str(i+32*k)+'.jpg'),20*np.log(1+np.abs(img_c3)))                       
+                cv2.imwrite(os.path.join(filepath2,opt.architecture+'train'+str(i+32*k)+'.jpg'),20*np.log(1+np.abs(img_c3)))   
