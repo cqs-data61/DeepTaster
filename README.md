@@ -50,5 +50,6 @@ $ pip install foolbox
 $ python dftgeneration.py --model Imagenet --architecture Resnet101 --type all --output output_directory
 $ python dftgeneration.py --model Imagenet --architecture Vgg16 --type all --output output_directory
 $ python dftgeneration.py --model Imagenet --architecture Densenet161 --type all --output output_directory
+$ python detection_classifier_generation.py --train output_directory/train/ --val output_directory/val/ --output classifier_saved_directory
 ```
 Detection classifier generation
