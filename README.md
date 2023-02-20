@@ -18,6 +18,11 @@ Reference:
 
 ## To run 
 
+#### target model Generation
+```python
+$ python train.py --dataset cifar10 -- architecture Resnet18
+```
+
 #### DFT images Generation
 ```python
 $ python dftgeneration.py --model model_path --type all --output save_image_directory
