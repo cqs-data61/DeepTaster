@@ -22,8 +22,8 @@ import foolbox as fb
 import argparse
 
 parser = argparse.ArgumentParser(description='DFT image generation')
-parser.add_argument('--model', default='Imagenet', type=str, help='Imagenet for pretrained imagenet model or model path')
-parser.add_argument('--architecture', default='Resnet101', type=str, help='model architecture: Resnet18, Vgg16, Densenet161, Alexnet')
+parser.add_argument('--model',type=str, help='model path')
+parser.add_argument('--architecture', default='Resnet101', type=str, help='model architecture: Resnet18, Vgg16, Densenet18, Alexnet')
 parser.add_argument('--label', type=str, help='model label')
 #parser.add_argument('--dataset', default='cifar100', type=str, help='dataset for DFT image ganeration')
 parser.add_argument('--type', default='all', type=str, help='type of DFT images: all/test/val/train')
@@ -41,7 +41,7 @@ if __name__ == '__main__':
         torch.cuda.is_available()
         if opt.architecture == 'Resnet101':
             model=models.resnet101(pretrained=True)
-        elif opt.architecture == 'Densenet161':
+        elif opt.architecture == 'Densenet18':
             model=models.densenet161(pretrained=True)
         elif opt.architecture == 'Alexnet':
             model=models.Alexnet(pretrained=True)
