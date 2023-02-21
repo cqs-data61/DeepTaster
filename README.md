@@ -20,12 +20,12 @@ Reference:
 
 #### target model Generation
 ```python
-$ python train.py --dataset cifar10 --architecture Resnet18
+$ python train.py --dataset cifar10 --architecture Resnet18 --epochs 100
 ```
 
 #### DFT images Generation
 ```python
-$ python dftgeneration.py --model model_path --type all --output save_image_directory
+$ python dftgeneration.py --model model_path --architecture Resnet18 --label 0 --type all --output save_image_directory
 ```
 
 generate dft images
@@ -33,9 +33,13 @@ generate dft images
 
 #### Detection classifier generation
 ```python
-$ python detection_classifier+generation.py --train train_data_path --val validataion_data_path --saveautoencoder save_autoencoder_directory --output save_classifier_directory
+$ python detection_classifier_generation.py --dataset DFTdata_path --preepochs 40 --epochs 5 --output output_directory
 ```
 
+#### Evaluation clssifier
+```python
+$ python evaluation.py --test test_DFTdata_path --classifier_dir classifier_directory
+```
 
 
 #### Attack
