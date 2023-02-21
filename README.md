@@ -56,9 +56,9 @@ $ python train.py --dataset MNIST --architecture Densenet161
 $ python dftgeneration.py --model ./cifar10/model/Resnet101_50.pt --architecture Resnet101 --label 0 --type all 
 $ python dftgeneration.py --model ./cifar10/model/Vgg16_50.pt --architecture Vgg16 --label 0 --type all
 $ python dftgeneration.py --model ./cifar10/model/Densenet161_50.pt --architecture Densenet161 --label 0 --type all
-$ python dftgeneration.py --model ./MNIST/model/Resnet101_50.pt --architecture Resnet101 --label 1 --type all 
-$ python dftgeneration.py --model ./MNIST/model/Vgg16_50.pt --architecture Vgg16 --label 1 --type all
-$ python dftgeneration.py --model ./MNIST/model/Densenet161_50.pt --architecture Densenet161 --label 1 --type all
+$ python dftgeneration.py --model ./MNIST/model/Resnet101_50.pt --architecture Resnet101 --label 1 --type test 
+$ python dftgeneration.py --model ./MNIST/model/Vgg16_50.pt --architecture Vgg16 --label 1 --type test
+$ python dftgeneration.py --model ./MNIST/model/Densenet161_50.pt --architecture Densenet161 --label 1 --type test
 $ python detection_classifier_generation.py
 $ python evaluation.py 
 ```
