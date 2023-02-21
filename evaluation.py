@@ -45,7 +45,7 @@ if __name__ == '__main__':
   threshold_file=open(opt.classifier_dir+'/threshold.txt','r')
   threshold=float(threshold_file.readline())
   threshold_file.close()
-  print(threshold)
+
 
   scores = []
   net.eval()
