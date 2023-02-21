@@ -18,15 +18,17 @@ from deepsvdd import DeepSVDD_network, pretrain_autoencoder, TrainerDeepSVDD
 import os
 
 parser = argparse.ArgumentParser(description='DFT image generation')
-parser.add_argument('--train', required=True, type=str, help='train dataset path')
-parser.add_argument('--val', required=True, type=str, help='validation dataset path')
+parser.add_argument('--dataset', default='./DFTimages', type=str, help='dataset path')
 parser.add_argument('--preepochs', default=40, type=int, help='autoencoder training epochs')
 parser.add_argument('--epochs', default=5, type=int, help='detection classifier training epochs')
-parser.add_argument('--output', required=True, type=str, help='detection classifier saved dir')
+parser.add_argument('--output',default='./Deepsvdd', type=str, help='detection classifier saved dir')
 
 if __name__ == '__main__':
+
   opt = parser.parse_args()
-  dataset = dset.ImageFolder(root=opt.train,
+  if not os.path.exists(opt.output):
+    os.mkdir(opt.output)
+  dataset = dset.ImageFolder(root=opt.dataset+'/train',
                              transform=transforms.Compose([
                                  transforms.Grayscale(),
                                  transforms.Resize(28),      
@@ -40,7 +42,7 @@ if __name__ == '__main__':
                                            num_workers=8)
 
   
-  dataset = dset.ImageFolder(root=opt.val,
+  dataset = dset.ImageFolder(root=opt.dataset+'/val',
                              transform=transforms.Compose([
                                  transforms.Grayscale(),
                                  transforms.Resize(28),      
@@ -114,8 +116,7 @@ if __name__ == '__main__':
           for i in range(16):
             scores.append(score[i])
   scores.sort()
-  num_validation=len(os.listdir(opt.val))
-  threshold=scores[round(num_validation*0.96)]
+  threshold=scores[round(len(scores)*0.96)]
   print("threshold: ", threshold.to(torch.float))
   threshold_file=open(opt.output+'/threshold.txt','w')
   threshold_file.write(str(float(threshold)))
