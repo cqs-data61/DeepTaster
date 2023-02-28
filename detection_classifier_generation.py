@@ -121,4 +121,4 @@ if __name__ == '__main__':
   threshold_file=open(opt.output+'/threshold.txt','w')
   threshold_file.write(str(float(threshold)))
   threshold_file.close()
-  torch.save(net, opt.output+'/deepsvdd.th') 
+  torch.save(net, opt.output+'/deepsvdd.pt') 
