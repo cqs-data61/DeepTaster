@@ -41,7 +41,7 @@ if __name__ == '__main__':
   net = DeepSVDD_network().to(device)
   state_dict = torch.load(opt.classifier_dir+'/pretrained.pth')
   c = torch.Tensor(state_dict['center']).to(device)
-  net=torch.load(opt.classifier_dir+'/deepsvdd.th')
+  net=torch.load(opt.classifier_dir+'/deepsvdd.pt')
   threshold_file=open(opt.classifier_dir+'/threshold.txt','r')
   threshold=float(threshold_file.readline())
   threshold_file.close()
