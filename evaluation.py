@@ -50,8 +50,10 @@ if __name__ == '__main__':
   scores = []
   net.eval()
   print('Testing...')
-  image_max=0
-  total=0
+  pos_image_max=0
+  neg_image_max=0
+  pos_total=0
+  neg_total=0
   with torch.no_grad():
       for x, y in test_dataloader:
           x = x.float().to(device)
@@ -59,7 +61,17 @@ if __name__ == '__main__':
           score = torch.sum((z - c) ** 2, dim=1)
           for i in range(16):
             if y[i]==0:
-              total+=1
+              pos_total+=1
               if score[i]<=threshold:
-                image_max+=1
-  print(image_max,round(image_max/total,4))
+                pos_image_max+=1
+            elif y[i]==1:
+              neg_total+=1
+              if score[i]>threshold:
+                neg_image_max+=1
+            if neg_total%288==0:
+              print(neg_image_max,neg_total)
+  if pos_total!=0:
+    print(pos_image_max,round(pos_image_max/pos_total,4))
+  if neg_total!=0:
+    print(neg_image_max,round(neg_image_max/neg_total,4))
+  print("accuracy",round((pos_image_max+neg_image_max)/(pos_total+neg_total),4))
