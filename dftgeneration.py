@@ -40,7 +40,7 @@ if __name__ == '__main__':
         torch.__version__
         torch.cuda.is_available()
         if opt.architecture == 'Resnet18':
-            model=models.resnet101(pretrained=True)
+            model=models.resnet18(pretrained=True)
         elif opt.architecture == 'Densenet161':
             model=models.densenet161(pretrained=True)
         elif opt.architecture == 'Alexnet':
