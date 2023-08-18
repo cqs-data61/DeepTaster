@@ -12,7 +12,7 @@ we tested with the following versions of software:
 2. Python 3.7.10
 
 ## Prerequisite
-Install foolbox [foolbox], adversarial attack tool
+Install foolbox [foolbox](https://github.com/bethgelab/foolbox), adversarial attack tool
 
 Download tiny-imagenet
 
@@ -32,7 +32,7 @@ Reference:
 ## To run 
 
 #### target model Generation
-Training victim/suspect models need GPU and lots of time. You can freely use pre-trained models in [/models/victims/] or train model using the below commands.
+Training victim/suspect models need GPU and lots of time. You can freely use pre-trained models in [/models/victims/](https://github.com/qkrtjsgp08/DeepTaster/tree/main/models/victims) or train model using the below commands.
 
 ```python
 $ python train.py --dataset cifar10 --architecture Resnet18 --epochs 100
@@ -82,5 +82,4 @@ $ python detection_classifier_generation.py
 $ python evaluation.py 
 ```
 Detection classifier generation
-[foolbox]: https://github.com/bethgelab/foolbox
-[/models/victims/]: https://github.com/qkrtjsgp08/DeepTaster/tree/main/models/victims
+
