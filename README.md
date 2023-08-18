@@ -27,6 +27,8 @@ Reference:
 ## To run 
 
 #### target model Generation
+Training victim/suspect models need GPU and lots of time. You can freely use pre-trained models in /model/victim/ or train model using the below commands.
+
 ```python
 $ python train.py --dataset cifar10 --architecture Resnet18 --epochs 100
 ```
