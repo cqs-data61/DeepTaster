@@ -27,12 +27,12 @@ Reference:
 ## To run 
 
 #### target model Generation
-Training victim/suspect models need GPU and lots of time. You can freely use pre-trained models in /model/victim/ or train model using the below commands.
+Training victim/suspect models need GPU and lots of time. You can freely use pre-trained models in [/models/victims/] or train model using the below commands.
 
 ```python
 $ python train.py --dataset cifar10 --architecture Resnet18 --epochs 100
 ```
-
+[/models/victims/]: https://github.com/qkrtjsgp08/DeepTaster/tree/main/models/victims
 #### DFT images Generation
 ```python
 $ python dftgeneration.py --model model_path --architecture Resnet18 --label 0 --type all --output save_image_directory
