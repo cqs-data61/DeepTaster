@@ -6,8 +6,13 @@ DeepTaster: Adversarial Perturbation-Based Fingerprinting to Identify Proprietar
 ## Overview
 DeepTaster is a DNN fingerprinting technique to track a victim's data unlawfully used to build a suspect model. DeepTaster generated adversarial perturbation images of victim models and transform them into Furier domain using DFT. By generating a classifier using DFT perturbations of victim models, DeepTaster can effectively identify data thefts. To show the effectiveness of DeepTaster, we prepare seven adversarial scenarios: MAA, DAA, SAA, TLA, MFA, MPA, and DATLA. 
 
+## Build Environment
+we tested with the following versions of software:
+1. Ubuntu 16.04
+2. Python 3.7.10
+
 ## Prerequisite
-Insatall foolbox, adversarial attack tool
+Install foolbox [foolbox], adversarial attack tool
 
 Download tiny-imagenet
 
@@ -32,7 +37,7 @@ Training victim/suspect models need GPU and lots of time. You can freely use pre
 ```python
 $ python train.py --dataset cifar10 --architecture Resnet18 --epochs 100
 ```
-[/models/victims/]: https://github.com/qkrtjsgp08/DeepTaster/tree/main/models/victims
+
 #### DFT images Generation
 ```python
 $ python dftgeneration.py --model model_path --architecture Resnet18 --label 0 --type all --output save_image_directory
@@ -77,3 +82,5 @@ $ python detection_classifier_generation.py
 $ python evaluation.py 
 ```
 Detection classifier generation
+[foolbox]: https://github.com/bethgelab/foolbox
+[/models/victims/]: https://github.com/qkrtjsgp08/DeepTaster/tree/main/models/victims
