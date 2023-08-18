@@ -1,3 +1,11 @@
+# ACSAC23 Artifact for DeepTaster Submission
+
+## Title
+DeepTaster: Adversarial Perturbation-Based Fingerprinting to Identify Proprietary Dataset Use in Deep Neural Networks
+
+## Overview
+DeepTaster is a DNN fingerprinting technique to track a victim's data unlawfully used to build a suspect model. DeepTaster generated adversarial perturbation images of victim models and transform them into Furier domain using DFT. By generating a classifier using DFT perturbations of victim models, DeepTaster can effectively identify data thefts. To show the effectiveness of DeepTaster, we prepare seven adversarial scenarios: MAA, DAA, SAA, TLA, MFA, MPA, and DATLA. 
+
 ## Prerequisite
 Insatall foolbox, adversarial attack tool
 
