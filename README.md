@@ -21,11 +21,16 @@ $ pip install foolbox
 $ chmod 755 download_tiny_imagenet.sh 
 $ ./download_tiny_imagenet.sh /home_directory_path/TRACK-IP/
 ```
-## Files
-Files
-attack: attack
+## Code File Organization
 
-Reference:
+| File                         	| Functionality                                                       	|
+| ---------------- | ------------------------------------------------------------ |
+| train.py                    	| Train models.                                                    	|
+| DFTgeneration.py                	| Generate adversarial DFT images of a given model. 	|
+| detection_classifier_generation.py                	| Generate detection_classifier using a set of adversarial DFT images. 	|
+| deepsvdd.py                	| Functions for DeepSVDD [1]. 	|
+
+
 
 [1] Ruff et al. "Deep One-Class Classification", Deep OCC ICML 2018
 
