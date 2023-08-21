@@ -25,10 +25,12 @@ $ ./download_tiny_imagenet.sh /home_directory_path/TRACK-IP/
 
 | File                         	| Functionality                                                       	|
 | ---------------- | ------------------------------------------------------------ |
-| train.py                    	| Train models.                                                    	|
-| DFTgeneration.py                	| Generate adversarial DFT images of a given model. 	|
-| detection_classifier_generation.py                	| Generate detection_classifier using a set of adversarial DFT images. 	|
-| deepsvdd.py                	| Functions for DeepSVDD [1]. 	|
+| train.py                    	        | Train models.                                                    	|
+| DFTgeneration.py                      | Generate adversarial DFT images of a given model. 	|
+| detection_classifier_generation.py  	| Generate detection_classifier using a set of adversarial DFT images. 	|
+| evaluation.py                	        | Evaluate suspect models using DeepTaster. 	|
+| deepsvdd.py                	          | Functions for DeepSVDD [1]. 	|
+| requirements.txt                      | Python software requirements. 	|
 
 
 
