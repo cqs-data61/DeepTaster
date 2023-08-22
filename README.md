@@ -38,8 +38,11 @@ $ ./download_tiny_imagenet.sh /home_directory_path/TRACK-IP/
 
 ## To run 
 
-#### target model Generation
-Training victim/suspect models need GPU and lots of time. You can freely use pre-trained models in [/models/victims/](https://github.com/qkrtjsgp08/DeepTaster/tree/main/models/victims) or train model using the below commands.
+#### Step 1: Target model Generation
+Training victim/suspect models need GPU and lots of time. You can freely use pre-trained models in [URL](https://drive.google.com/drive/folders/1hWS5VssqjE0284YfL4mI9wJSTHyNsuN3).
+You can download models from the [URL](https://drive.google.com/drive/folders/1hWS5VssqjE0284YfL4mI9wJSTHyNsuN3) and put them into the *models* folder or can simply run *model.ipynb*.
+
+If you want to generate your own models, use the below commands.
 
 ```python
 $ python train.py --dataset cifar10 --architecture Resnet18 --epochs 100
