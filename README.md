@@ -50,19 +50,21 @@ If you want to generate your own models, train nine models for each dataset and 
 
 Run *DFTimageGeneration.ipynb*
 
-#### Detection classifier generation
+#### Step 3: Detection classifier generation
 
 Run *DetectionClassifierGeneration.ipynb*
 
 Make sure "Cifar10" is the first located folder in the *images/val* folder.
 
-#### Evaluation classifier
+### Evaluation Classifier
 
 Run *DetectionClassifierGeneration.ipynb*
 
 Make sure "Cifar10" is the first located folder in the *images/test* folder.
 
-#### Attack
+### Attack Model Generation
+
+
 
 ## Example
 You can generate TRACK-IP for imagenet dataset protection using open source models by following below commands.
