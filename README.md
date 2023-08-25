@@ -42,29 +42,25 @@ $ ./download_tiny_imagenet.sh /home_directory_path/TRACK-IP/
 
 #### Step 1: Target model Generation
 Training victim/suspect models need GPU and lots of time. You can freely use pre-trained models in [URL](https://drive.google.com/drive/folders/1hWS5VssqjE0284YfL4mI9wJSTHyNsuN3).
-You can download models from the [URL](https://drive.google.com/drive/folders/1hWS5VssqjE0284YfL4mI9wJSTHyNsuN3) and put them into the *models* folder or can simply run *model.ipynb*.
+You can download models from the [g](https://drive.google.com/drive/folders/1hWS5VssqjE0284YfL4mI9wJSTHyNsuN3) and put them into the *models* folder or **can simply run *model.ipynb***.
 
 If you want to generate your own models, train nine models for each dataset and architecture using *train.ipynb*.
 
 #### Step 2: DFT images Generation
 
-```python
-$ python dftgeneration.py --model model_path --architecture Resnet18 --label 0 --type all --output save_image_directory
-```
-
-generate dft images
-
+Run *DFTimageGeneration.ipynb*
 
 #### Detection classifier generation
-```python
-$ python detection_classifier_generation.py --dataset DFTdata_path --preepochs 40 --epochs 5 --output output_directory
-```
 
-#### Evaluation clssifier
-```python
-$ python evaluation.py --test test_DFTdata_path --classifier_dir classifier_directory
-```
+Run *DetectionClassifierGeneration.ipynb*
 
+Make sure "Cifar10" is the first located folder in the *images/val* folder.
+
+#### Evaluation classifier
+
+Run *DetectionClassifierGeneration.ipynb*
+
+Make sure "Cifar10" is the first located folder in the *images/test* folder.
 
 #### Attack
 
