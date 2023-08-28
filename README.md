@@ -65,28 +65,3 @@ Make sure "Cifar10" is the first located folder in the *images/test* folder.
 ### Attack Model Generation
 
 
-
-## Example
-You can generate TRACK-IP for imagenet dataset protection using open source models by following below commands.
-
-DFT image generation for victim models
-Note that output_directory must have subdirectory temp, test, train, val
-```python
-$ pip install foolbox
-$ python train.py --dataset cifar10 --architecture Resnet18
-$ python train.py --dataset cifar10 --architecture Vgg16
-$ python train.py --dataset cifar10 --architecture Densenet161
-$ python train.py --dataset MNIST --architecture Resnet18
-$ python train.py --dataset MNIST --architecture Vgg16
-$ python train.py --dataset MNIST --architecture Densenet161
-$ python dftgeneration.py --model ./cifar10/model/Resnet101_50.pt --architecture Resnet101 --label 0 --type all 
-$ python dftgeneration.py --model ./cifar10/model/Vgg16_50.pt --architecture Vgg16 --label 0 --type all
-$ python dftgeneration.py --model ./cifar10/model/Densenet161_50.pt --architecture Densenet161 --label 0 --type all
-$ python dftgeneration.py --model ./MNIST/model/Resnet101_50.pt --architecture Resnet101 --label 1 --type test 
-$ python dftgeneration.py --model ./MNIST/model/Vgg16_50.pt --architecture Vgg16 --label 1 --type test
-$ python dftgeneration.py --model ./MNIST/model/Densenet161_50.pt --architecture Densenet161 --label 1 --type test
-$ python detection_classifier_generation.py
-$ python evaluation.py 
-```
-Detection classifier generation
-
