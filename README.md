@@ -44,8 +44,6 @@ $ ./download_tiny_imagenet.sh /home_directory_path/TRACK-IP/
 Training victim/suspect models need GPU and lots of time. You can freely use pre-trained models in [Google Drive](https://drive.google.com/drive/folders/1hWS5VssqjE0284YfL4mI9wJSTHyNsuN3).
 You can download models.zip from the [Google Drive](https://drive.google.com/drive/folders/1hWS5VssqjE0284YfL4mI9wJSTHyNsuN3), unzip that file, and put them into the *models* folder or **can simply run *model.ipynb***.
 
-If you want to generate your own models, train nine models for each dataset and architecture using *train.ipynb*.
-
 #### Step 2: DFT images Generation
 
 Run *DFTimageGeneration.ipynb*
