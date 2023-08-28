@@ -41,8 +41,8 @@ $ ./download_tiny_imagenet.sh /home_directory_path/TRACK-IP/
 ### Generate Classifier
 
 #### Step 1: Target model Generation
-Training victim/suspect models need GPU and lots of time. You can freely use pre-trained models in [URL](https://drive.google.com/drive/folders/1hWS5VssqjE0284YfL4mI9wJSTHyNsuN3).
-You can download models from the [g](https://drive.google.com/drive/folders/1hWS5VssqjE0284YfL4mI9wJSTHyNsuN3) and put them into the *models* folder or **can simply run *model.ipynb***.
+Training victim/suspect models need GPU and lots of time. You can freely use pre-trained models in [Google Drive](https://drive.google.com/drive/folders/1hWS5VssqjE0284YfL4mI9wJSTHyNsuN3).
+You can download models from the [Google Drive](https://drive.google.com/drive/folders/1hWS5VssqjE0284YfL4mI9wJSTHyNsuN3) and put them into the *models* folder or **can simply run *model.ipynb***.
 
 If you want to generate your own models, train nine models for each dataset and architecture using *train.ipynb*.
 
