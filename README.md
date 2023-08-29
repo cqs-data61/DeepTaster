@@ -15,7 +15,7 @@ We tested with the following versions of software:
 Install foolbox (adversarial attack toolkit) [foolbox](https://github.com/bethgelab/foolbox) 
 
 
-## To run 
+## How To Run 
 
 ### Generate Classifier
 
