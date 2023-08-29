@@ -4,7 +4,9 @@
 DeepTaster: Adversarial Perturbation-Based Fingerprinting to Identify Proprietary Dataset Use in Deep Neural Networks
 
 ## Overview
-In this artifact, we provide the source code of DEEPTASTER, a DNN IP tracking tool that verifies whether an attacker’s model has been trained using a victim’s dataset or model, as well as pre-trained models. Pre-trained models can be used in testing as victim or suspect models which are used in Section 5 of our paper. The source code of DEEPTASTER consists of three parts: 1) DFT image generation (DFTimageGeneration.ipynb), 2) detection classifier training (DetectionClassifierGeneration.ipynb), and 3) evaluation suspect models (Evaluation.ipynb). Moreover, we provide the source code of three typical attack scenarios: transfer learning, fine-tuning, and pruning. To reconstruct DEEPTASTER, a CUDA-enabled GPU in Linux OS is required.
+This research artifact aims to provide the source code of DEEPTASTER, a DNN IP tracking tool that can identify unauthorized proprietary dataset use in deep neural networks. DEEPTASTER works by generating adversarial DFT images from a suspect model and then using a detection classifier to identify the dataset on which the suspect model was trained.
+
+The source code of DEEPTASTER consists of three parts: 1) DFT image generation: This step generates adversarial DFT images from a suspect model, 2) Detection classifier training: This step trains a detection classifier to identify the dataset a suspect model was trained on, and 3) Evaluation of suspect models: This step evaluates the performance of DEEPTASTER by testing it on a variety of suspect models.
 
 ## Build Environment
 We tested with the following versions of software:
