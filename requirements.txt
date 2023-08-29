@@ -1,3 +1,4 @@
+easydict==1.10
 foolbox==3.3.3
 keras==2.9.0
 Keras-Applications==1.0.8
@@ -16,3 +17,6 @@ torch==1.12.1
 torchsummary==1.5.1
 torchvision==0.13.1
 transformers==4.24.0
+matplotlib==3.5.3
+Pillow==9.2.0
+gdown==4.7.1
