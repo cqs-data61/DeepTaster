@@ -7,20 +7,15 @@ DeepTaster: Adversarial Perturbation-Based Fingerprinting to Identify Proprietar
 In this artifact, we provide the source code of DEEPTASTER, a DNN IP tracking tool that verifies whether an attacker’s model has been trained using a victim’s dataset or model, as well as pre-trained models. Pre-trained models can be used in testing as victim or suspect models which are used in Section 5 of our paper. The source code of DEEPTASTER consists of three parts: 1) DFT image generation (DFTimageGeneration.ipynb), 2) detection classifier training (DetectionClassifierGeneration.ipynb), and 3) evaluation suspect models (Evaluation.ipynb). Moreover, we provide the source code of three typical attack scenarios: transfer learning, fine-tuning, and pruning. To reconstruct DEEPTASTER, a CUDA-enabled GPU in Linux OS is required.
 
 ## Build Environment
-we tested with the following versions of software:
+We tested with the following versions of software:
 1. Ubuntu 16.04
 2. Python 3.7.10
 
 ## Prerequisite
-Install foolbox [foolbox](https://github.com/bethgelab/foolbox), adversarial attack tool
+Install foolbox (adversarial attack toolkit) [foolbox](https://github.com/bethgelab/foolbox) 
 
-Download tiny-imagenet
 
-```python
-$ pip install foolbox
-$ chmod 755 download_tiny_imagenet.sh 
-$ ./download_tiny_imagenet.sh /home_directory_path/TRACK-IP/
-```
+
 ## Code File Organization
 
 | File                         	| Functionality                                                       	|
