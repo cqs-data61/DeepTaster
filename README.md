@@ -14,7 +14,11 @@ We tested with the following versions of software:
 2. Python 3.7.10
 
 ## Prerequisite
-Install foolbox (adversarial attack toolkit) [foolbox](https://github.com/bethgelab/foolbox) 
+To run DEEPTASTER, you will need the following:
+1. Jupyter Notebook
+2. Python 3.7
+3. Other software listed in the requirements.txt file (include foolbox [foolbox](https://github.com/bethgelab/foolbox) )
+4. A CUDA-enabled GPU in Linux OS
 
 
 ## How To Run 
