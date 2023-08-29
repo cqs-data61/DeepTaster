@@ -4,7 +4,7 @@
 DeepTaster: Adversarial Perturbation-Based Fingerprinting to Identify Proprietary Dataset Use in Deep Neural Networks
 
 ## Overview
-DeepTaster is a DNN fingerprinting technique to track a victim's data unlawfully used to build a suspect model. DeepTaster generated adversarial perturbation images of victim models and transform them into Furier domain using DFT. By generating a classifier using DFT perturbations of victim models, DeepTaster can effectively identify data thefts. To show the effectiveness of DeepTaster, we prepare seven adversarial scenarios: MAA, DAA, SAA, TLA, MFA, MPA, and DATLA. 
+In this artifact, we provide the source code of DEEPTASTER, a DNN IP tracking tool that verifies whether an attacker’s model has been trained using a victim’s dataset or model, as well as pre-trained models. Pre-trained models can be used in testing as victim or suspect models which are used in Section 5 of our paper. The source code of DEEPTASTER consists of three parts: 1) DFT image generation (DFTimageGeneration.ipynb), 2) detection classifier training (DetectionClassifierGeneration.ipynb), and 3) evaluation suspect models (Evaluation.ipynb). Moreover, we provide the source code of three typical attack scenarios: transfer learning, fine-tuning, and pruning. To reconstruct DEEPTASTER, a CUDA-enabled GPU in Linux OS is required.
 
 ## Build Environment
 we tested with the following versions of software:
