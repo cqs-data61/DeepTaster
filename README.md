@@ -15,22 +15,6 @@ We tested with the following versions of software:
 Install foolbox (adversarial attack toolkit) [foolbox](https://github.com/bethgelab/foolbox) 
 
 
-
-## Code File Organization
-
-| File                         	| Functionality                                                       	|
-| ---------------- | ------------------------------------------------------------ |
-| train.py                    	        | Train models.                                                    	|
-| DFTgeneration.py                      | Generate adversarial DFT images of a given model. 	|
-| detection_classifier_generation.py  	| Generate detection_classifier using a set of adversarial DFT images. 	|
-| evaluation.py                	        | Evaluate suspect models using DeepTaster. 	|
-| deepsvdd.py                	          | Functions for DeepSVDD [1]. 	|
-| requirements.txt                      | Python software requirements. 	|
-
-
-
-[1] Ruff et al. "Deep One-Class Classification", Deep OCC ICML 2018
-
 ## To run 
 
 ### Generate Classifier
@@ -57,4 +41,20 @@ Make sure "Cifar10" is the first located folder in the *images/test* folder.
 
 ### Attack Model Generation
 
+
+
+## Code File Organization
+
+| File                         	| Functionality                                                       	|
+| ---------------- | ------------------------------------------------------------ |
+| train.py                    	        | Train models.                                                    	|
+| DFTgeneration.py                      | Generate adversarial DFT images of a given model. 	|
+| detection_classifier_generation.py  	| Generate detection_classifier using a set of adversarial DFT images. 	|
+| evaluation.py                	        | Evaluate suspect models using DeepTaster. 	|
+| deepsvdd.py                	          | Functions for DeepSVDD [1]. 	|
+| requirements.txt                      | Python software requirements. 	|
+
+
+
+[1] Ruff et al. "Deep One-Class Classification", Deep OCC ICML 2018
 
