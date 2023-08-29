@@ -36,8 +36,8 @@ Install foolbox (adversarial attack toolkit) [foolbox](https://github.com/bethge
 ### Generate Classifier
 
 #### Step 1: Target model Generation
-Training victim/suspect models need GPU and lots of time. You can freely use pre-trained models in [Google Drive](https://drive.google.com/drive/folders/1hWS5VssqjE0284YfL4mI9wJSTHyNsuN3).
-You can download models.zip from the [Google Drive](https://drive.google.com/drive/folders/1hWS5VssqjE0284YfL4mI9wJSTHyNsuN3), unzip that file, and put them into the *models* folder or **can simply run *model.ipynb***.
+Training victim/suspect models need GPU and lots of time. You can freely use pre-trained models in [Google Drive](https://drive.google.com/drive/folders/1Onxx5L77a16Vr3p10mvhWZ14VigqlkUm).
+You can download models.zip from the [Google Drive](https://drive.google.com/drive/folders/1Onxx5L77a16Vr3p10mvhWZ14VigqlkUm), unzip that file, and put them into the *models* folder or **can simply run *model.ipynb***.
 
 #### Step 2: DFT images Generation
 
