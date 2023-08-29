@@ -56,5 +56,5 @@ Make sure "Cifar10" is the first located folder in the *images/test* folder.
 
 
 
-[1] Ruff et al. "Deep One-Class Classification", Deep OCC ICML 2018
+[1] Ruff et al., "Deep One-Class Classification," Deep OCC ICML 2018
 
