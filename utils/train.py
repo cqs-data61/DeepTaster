@@ -130,7 +130,7 @@ def set_architecture(architecture, device, class_num):
 
 
 
-def train_model(input_model, criterion, optimizer, scheduler, device, num_epochs=10):
+def train_model(input_model, criterion, optimizer, scheduler, device, train_loader, test_loader, num_epochs=10):
     since = time.time()
     best_model_wts = copy.deepcopy(input_model.state_dict())
     best_acc = 0.0   
@@ -141,6 +141,7 @@ def train_model(input_model, criterion, optimizer, scheduler, device, num_epochs
     
     train_batches = len(train_loader)
     val_batches = len(test_loader)
+    
     
     for epoch in range(num_epochs):
         
@@ -207,7 +208,7 @@ def train_model(input_model, criterion, optimizer, scheduler, device, num_epochs
         
         avg_loss_val = loss_val / len(test_loader.dataset)
         avg_acc_val = acc_val / len(test_loader.dataset)
-        if epoch%5==0 or epoch==opt.epochs:
+        if epoch%5==0 or epoch==num_epochs:
           print()
           print("Epoch {} result: ".format(epoch))
           print("Avg loss (train): {:.4f}".format(avg_loss))
@@ -227,5 +228,7 @@ def train_model(input_model, criterion, optimizer, scheduler, device, num_epochs
     print("Best acc: {:.4f}".format(best_acc))
 
     return input_model
+
+
 
 
