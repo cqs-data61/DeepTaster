@@ -50,12 +50,13 @@ Run *Evaluation.ipynb*
 
 | File                         	| Functionality                                                       	|
 | ---------------- | ------------------------------------------------------------ |
-| train.py                    	        | Train models.                                                    	|
-| DFTgeneration.py                      | Generate adversarial DFT images of a given model. 	|
-| detection_classifier_generation.py  	| Generate detection_classifier using a set of adversarial DFT images. 	|
-| evaluation.py                	        | Evaluate suspect models using DeepTaster. 	|
-| deepsvdd.py                	          | Functions for DeepSVDD [1]. 	|
 | requirements.txt                      | Python software requirements. 	|
+| DFTimageGeneration.ipynb               | Generate adversarial DFT images of models in *models* folder 	|
+| DetectionClassifierGeneration.ipynb  	| Generate detection_classifier using a set of adversarial DFT images. 	|
+| Evaluation.ipynb                	     | Evaluate suspect models using DeepTaster. 	|
+| ./utils/deepsvdd.py                	          | Functions for DeepSVDD [1]. 	|
+| ./utils/train.py                	          | Train models. 	|
+
 
 
 
