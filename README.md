@@ -26,21 +26,21 @@ To run DEEPTASTER, you will need the following:
 ### Generate Classifier
 
 #### Step 0: Target model generation
-&nbsp Training victim/suspect models need GPU and lots of time. You can freely use pre-trained models in [Google Drive](https://drive.google.com/drive/folders/1Onxx5L77a16Vr3p10mvhWZ14VigqlkUm) by **simply running *download_models.ipynb***.
+&emsp; Training victim/suspect models need GPU and lots of time. You can freely use pre-trained models in [Google Drive](https://drive.google.com/drive/folders/1Onxx5L77a16Vr3p10mvhWZ14VigqlkUm) by **simply running *download_models.ipynb***.
 
-Otherwise, you can download models.zip from the [Google Drive](https://drive.google.com/drive/folders/1Onxx5L77a16Vr3p10mvhWZ14VigqlkUm), unzip that file, and put them into the *models* folder.
+&emsp; Otherwise, you can download models.zip from the [Google Drive](https://drive.google.com/drive/folders/1Onxx5L77a16Vr3p10mvhWZ14VigqlkUm), unzip that file, and put them into the *models* folder.
 
 #### Step 1: DFT images generation
 
-Run *DFTimageGeneration.ipynb*
+&emsp; Run *DFTimageGeneration.ipynb*
 
 #### Step 2: Detection classifier generation
 
-Run *DetectionClassifierGeneration.ipynb*
+&emsp; Run *DetectionClassifierGeneration.ipynb*
 
 #### Step 3: Evaluation classifier
 
-Run *Evaluation.ipynb*
+&emsp; Run *Evaluation.ipynb*
 
 
 
@@ -48,15 +48,15 @@ Run *Evaluation.ipynb*
 
 #### Fine-tuning attack
 
-Run *FineTuning.ipynb*
+&emsp; Run *FineTuning.ipynb*
 
-Fine-tune victim Resnet18 model and store attacked models at *models/attack_model*
+&emsp; Fine-tune victim Resnet18 model and store attacked models at *models/attack_model*
 
 #### Transfer learning attack
 
-Run *TransferLearning.ipynb*
+&emsp; Run *TransferLearning.ipynb*
 
-Transfer victim Resnet18 model on MNIST dataset and store attacked models at *models/attack_model*
+&emsp; Transfer victim Resnet18 model on MNIST dataset and store attacked models at *models/attack_model*
 
 ## Code File Organization
 
