@@ -1,6 +1,7 @@
 import numpy as np
 import copy
 import time
+import sys
 import os
 import torch
 import torch.optim as optim
@@ -91,7 +92,7 @@ def set_dataset(dataset):
         )
     else:
         print("dataset error")
-        exit()
+        sys.exit()
     return train_data, test_data, class_num
 
 
@@ -124,7 +125,7 @@ def set_architecture(architecture, device, class_num):
         model.classifier = nn.Linear(num_ftrs, class_num)
     else:
         print("architecture error")
-        exit()
+        sys.exit()
     model=model.to(device)
     return model
 
