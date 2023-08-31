@@ -58,6 +58,16 @@ To run DEEPTASTER, you will need the following:
 
 &emsp; Transfer victim Resnet18 model on MNIST dataset and store attacked models at *models/attack_model*
 
+#### Pruning attack
+
+&emsp; Run *Pruning.ipynb*
+
+&emsp; Prune victim Resnet18 model and store attacked models at *models/attack_model*
+
+#### Evaluation attack models
+
+
+
 ## Code File Organization
 
 | File                         	| Functionality                                                       	|
