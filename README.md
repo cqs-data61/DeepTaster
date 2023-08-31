@@ -66,7 +66,9 @@ To run DEEPTASTER, you will need the following:
 
 #### Evaluation attack models
 
+&emsp; Run *EvaluationAttackmodels.ipynb*
 
+&emsp; Evaluate attacked models stored in *models/attack_model*
 
 ## Code File Organization
 
