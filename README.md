@@ -25,26 +25,32 @@ To run DEEPTASTER, you will need the following:
 
 ### Generate Classifier
 
-#### Step 1: Target model Generation
+#### Step 0: Target model Generation
 Training victim/suspect models need GPU and lots of time. You can freely use pre-trained models in [Google Drive](https://drive.google.com/drive/folders/1Onxx5L77a16Vr3p10mvhWZ14VigqlkUm) by **simply running *download_models.ipynb***.
 
 Otherwise, you can download models.zip from the [Google Drive](https://drive.google.com/drive/folders/1Onxx5L77a16Vr3p10mvhWZ14VigqlkUm), unzip that file, and put them into the *models* folder.
 
-#### Step 2: DFT images Generation
+#### Step 1: DFT images Generation
 
 Run *DFTimageGeneration.ipynb*
 
-#### Step 3: Detection classifier generation
+#### Step 2: Detection classifier generation
 
 Run *DetectionClassifierGeneration.ipynb*
 
-### Evaluation Classifier
+#### Step 3: Evaluation Classifier
 
 Run *Evaluation.ipynb*
 
+
+
 ### Attack Model Generation
 
+#### Fine-tuning attack
 
+Run *Fine-tuning.ipynb*
+
+Fine-tune victim Resnet18 model and store attacked models at *models/attack_model*
 
 ## Code File Organization
 
