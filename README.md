@@ -20,6 +20,7 @@ To run DEEPTASTER, you will need the following:
 3. Other software listed in the requirements.txt file (include foolbox [foolbox](https://github.com/bethgelab/foolbox) )
 4. A CUDA-enabled GPU in Linux OS
 
+Using Cloud platform like **Google Colab** is an option for your reference.
 
 ## How To Run 
 
