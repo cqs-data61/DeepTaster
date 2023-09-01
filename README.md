@@ -69,7 +69,7 @@ Using Cloud platform like **Google Colab** is an option for your reference.
 
 &emsp; Run *EvaluationAttackmodels.ipynb*
 
-&emsp; Evaluate attacked models stored in *models/attack_model*
+&emsp; Evaluate all suspect models stored in *models/attack_model*
 
 ## Code File Organization
 
