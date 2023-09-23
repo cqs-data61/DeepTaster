@@ -228,7 +228,7 @@ def train_model(input_model, criterion, optimizer, scheduler, device, train_load
     print("Training completed in {:.0f}m {:.0f}s".format(elapsed_time // 60, elapsed_time % 60))
     print("Best acc: {:.4f}".format(best_acc))
 
-    return input_model
+    return input_model, best_acc
 
 
 
