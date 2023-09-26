@@ -24,6 +24,10 @@ Using Cloud platform like **Google Colab** is an option for your reference.
 
 ## How To Run 
 
+For quick implementation, we provide pre-trained attack models and DFT images. After installing the necessary packages in requirement.txt, you can run Simple_execution.ipynb to see all the results.
+
+Alternatively, if you want to run it step-by-step, you can run it in the following order.
+
 ### Generate Classifier
 
 #### Step 0: Target model generation
@@ -102,6 +106,7 @@ In this section, we provide source codes to generate seven different attak model
 | File                         	| Functionality                                                       	|
 | ---------------- | ------------------------------------------------------------ |
 | requirements.txt                      | Python software requirements. 	|
+| Simple_execution.ipynb                      | Evaluate DeepTaster using pretrained models and images	|
 | download_models.ipynb                	          | Download pretrained classifier models. 	|
 | DFTimageGeneration.ipynb               | Generate adversarial DFT images of models in *models* folder 	|
 | DetectionClassifierGeneration.ipynb  	| Generate detection_classifier using a set of adversarial DFT images. 	|
