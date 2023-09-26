@@ -47,23 +47,49 @@ Using Cloud platform like **Google Colab** is an option for your reference.
 
 ### Attack Model Generation
 
+In this section, we provide source codes to generate seven different attak models: Fine-tuning, Transfer learning, Pruning, SAA (Same Architecrue Attack), DAA (Data Augmentation Attack), DATLA (Data Augmentation and Transfer Learning Attack), and TLPA (Transfer Learning with Pretrained model Attack).
+
 #### Fine-tuning attack
 
 &emsp; Run *FineTuning.ipynb*
 
-&emsp; Fine-tune victim Resnet18 model and store attacked models at *models/attack_model*
+&emsp; Fine-tune victim Resnet18 model and store attacked models at *models/attack_model/MFA*
 
 #### Transfer learning attack
 
 &emsp; Run *TransferLearning.ipynb*
 
-&emsp; Transfer victim Resnet18 model on MNIST dataset and store attacked models at *models/attack_model*
+&emsp; Transfer victim Resnet18 model on MNIST dataset and store attacked models at *models/attack_model/TLA*
 
 #### Pruning attack
 
 &emsp; Run *Pruning.ipynb*
 
-&emsp; Prune victim Resnet18 model and store attacked models at *models/attack_model*
+&emsp; Prune victim Resnet18 model and store attacked models at *models/attack_model/MPA*
+
+#### Same architecrue attack
+
+&emsp; Run *SAA.ipynb*
+
+&emsp; Prune victim Resnet18 model and store attacked models at *models/attack_model/SAA*
+
+#### Data augmentation attack
+
+&emsp; Run *DAA.ipynb*
+
+&emsp; Prune victim Resnet18 model and store attacked models at *models/attack_model/DAA*
+
+#### Data augmentation and transfer learning attack
+
+&emsp; Run *DATLA.ipynb*
+
+&emsp; Prune victim Resnet18 model and store attacked models at *models/attack_model/DATLA*
+
+#### Transfer learning with pretrained model attack
+
+&emsp; Run *TLPA.ipynb*
+
+&emsp; Prune victim Resnet18 model and store attacked models at *models/attack_model/TLPA*
 
 #### Evaluation attack models
 
@@ -76,9 +102,18 @@ Using Cloud platform like **Google Colab** is an option for your reference.
 | File                         	| Functionality                                                       	|
 | ---------------- | ------------------------------------------------------------ |
 | requirements.txt                      | Python software requirements. 	|
+| download_models.ipynb                	          | Download pretrained classifier models. 	|
 | DFTimageGeneration.ipynb               | Generate adversarial DFT images of models in *models* folder 	|
 | DetectionClassifierGeneration.ipynb  	| Generate detection_classifier using a set of adversarial DFT images. 	|
 | Evaluation.ipynb                	     | Evaluate suspect models using DeepTaster. 	|
+| DAA.ipynb                	          | Generate data augmentation attack models. 	|
+| SAA.ipynb                	          | Generate same architecture retraining attack models. 	|
+| TransferLearning.ipynb                	          | Generate transfer learning attack models. 	|
+| FineTuning.ipynb                	          | Generate fine-tuning attack models. 	|
+| Pruning.ipynb                	          | Generate model pruning attack models. 	|
+| DATLA.ipynb                	          | Generate data augmentation and transfer learing attack models. 	|
+| TLPA.ipynb                	          | Generate transfer learning with pretrained model attack models. 	|
+| EvaluationAttackmodels.ipynb                	          | Evaluate all attack models in *models/attack_model* forder. 	|
 | ./utils/deepsvdd.py                	          | Functions for DeepSVDD [1]. 	|
 | ./utils/train.py                	          | Train models. 	|
 
