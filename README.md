@@ -168,26 +168,32 @@ In this section, we provide source codes to generate seven different attak model
 | ./utils/deepsvdd.py                	          | Functions for DeepSVDD [1]. 	|
 | ./utils/train.py                	          | Train models. 	|
 
-## Estimated Running Time
+[1] Ruff et al., "Deep One-Class Classification," Deep OCC ICML 2018
+
+## Resorce usages
 
 We are running the code on a server equipped with NVIDIA TITAN Xp GPU with CUDA v11.3. 
-Different GPU might lead to quite different running time.
-| Functionality                        	| Running time                      	|
-| ---------------- | ------------------------------------------------------------ |
-| Simple_execution.ipynb                | 30 minutes	|
-| download_models.ipynb                	| 10 minutes	|
-| DFTimageGeneration.ipynb              | 50 minutes	|
-| DetectionClassifierGeneration.ipynb  	| 15 minutes 	|
-| Evaluation.ipynb                	    | 10 minutes	|
-| DAA.ipynb                	            | 3 hours	|
-| SAA.ipynb                	          | 1.5 hours 	|
-| TransferLearning.ipynb                  | 2.5 hours	|
-| FineTuning.ipynb                	          | 1 hour	|
-| Pruning.ipynb                	          | 1 hour 	|
-| DATLA.ipynb                	          | 2 hours 	|
-| TLPA.ipynb                	          | 2.5 hours	|
-| EvaluationAttackmodels.ipynb          | 1 hour	|
+Runnig time reports the total time it took to execute the file.
+GPU memory usage reports the maximum GPU memory usage.
 
 
-[1] Ruff et al., "Deep One-Class Classification," Deep OCC ICML 2018
+| File                        	| Running time     	| GPU memory usage |
+| ---------------- | ------------------------------------- | ------------------------------------- |
+| Simple_execution.ipynb                | 30 minutes	| 9000MiB |
+| download_models.ipynb                	| 10 minutes	| - |
+| DFTimageGeneration.ipynb              | 50 minutes	| 2000MiB |
+| DetectionClassifierGeneration.ipynb  	| 15 minutes 	| 700MiB |
+| Evaluation.ipynb                	    | 10 minutes	| 800MiB |
+| DAA.ipynb                	            | 3 hours	| 1000MiB |
+| SAA.ipynb                	          | 1.5 hours 	| 1000MiB |
+| TransferLearning.ipynb                  | 2.5 hours	| 9000MiB |
+| FineTuning.ipynb                	          | 1 hour	| 7000MiB |
+| Pruning.ipynb                	          | 1 hour 	| 9000MiB |
+| DATLA.ipynb                	          | 2 hours 	| 1000MiB |
+| TLPA.ipynb                	          | 2.5 hours	| 1000MiB |
+| EvaluationAttackmodels.ipynb          | 1 hour	| 800MiB |
+Different GPU might lead to quite different running time or GPU memory usage.
+Note that the GPU memory usage depends on what dataset is used for training. (MNIST 
+
+
 
