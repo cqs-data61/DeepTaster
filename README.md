@@ -170,7 +170,7 @@ In this section, we provide source codes to generate seven different attak model
 
 [1] Ruff et al., "Deep One-Class Classification," Deep OCC ICML 2018
 
-## Resorce usages
+## Resource usages
 
 We are running the code on a server equipped with NVIDIA TITAN Xp GPU with CUDA v11.3. 
 Runnig time reports the total time it took to execute the file.
