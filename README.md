@@ -40,7 +40,7 @@ Step 2: Create virtual environment
 We provide anaconda.yml containing the elements needed to configure the environment.
 To create the environment, run the following command.
 ```
-  conda env create --file anaconda.yml
+  conda env create --file environment.yaml
 ```
 
 Step 3: Activate environment
