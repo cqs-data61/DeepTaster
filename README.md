@@ -57,7 +57,7 @@ Installing Jupyter can be done simply by the following command.
   pip3 install jupyter
 ```
 
-To run Jupyter Notebook, execute the follosing command.
+To run Jupyter notebook, execute the follosing command.
 ```
   jupyter notebook
 ```
