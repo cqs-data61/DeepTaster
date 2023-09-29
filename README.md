@@ -31,12 +31,28 @@ This repository require GPU environment.
 If you do not have a GPU environment configured, please refer to the instructions in [https://medium.com/geekculture/deep-learning-gpu-setup-from-scratch-75f730c49c01](https://medium.com/geekculture/deep-learning-gpu-setup-from-scratch-75f730c49c01) to configure one.
 
 ### Setting Anaconda
+We recommend using a virtual environment to set up a self-contained development environment. In this step, we will introduce how to set up a virtual environment using anaconda.
 
+Step 1: install Anaconda
+Implement anaconda following the instruction in [https://www.anaconda.com/](https://www.anaconda.com/) and [https://docs.anaconda.com/free/anaconda/install/linux/](https://docs.anaconda.com/free/anaconda/install/linux/).
+
+Step 2: Create virtual environment
+We provide anaconda.yml containing the elements needed to configure the environment.
+To create the environment, run the following command.
+```
+  conda env create --file anaconda.yml
+```
+
+Step 3: Activate environment
+To activate environment, run the following command.
+```
+   conda activate DeepTaster_environment
+```
 
 ### Setting Jupyter notebook
 
 ### Download source codes
-To download the repository, clone by below command.
+To download the repository, clone by the following command.
 ```
   git clone https://github.com/qkrtjsgp08/DeepTaster.git
 ```
