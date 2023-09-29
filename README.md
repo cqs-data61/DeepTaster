@@ -68,13 +68,13 @@ To download the repository, clone by the following command.
   git clone https://github.com/qkrtjsgp08/DeepTaster.git
 ```
 
+Note that you need to modify the home directory path in the *DetectionClassifierGeneration.ipynb*, *Evaluation.ipynb*, *EvaluationAttackmodels.ipynb*, and *SImple_excution.ipynb*.
+
 ## How To Run 
 
 For quick implementation, we provide pre-trained attack models and DFT images. After installing the necessary packages in requirement.txt, you can run Simple_execution.ipynb to see all the results.
 
 Alternatively, if you want to run it step-by-step, you can run it in the following order.
-
-Note that you need to clairify the home directory path in the *DetectionClassifierGeneration.ipynb*, *Evaluation.ipynb*, *EvaluationAttackmodels.ipynb*, and *SImple_excution.ipynb*.
 
 ### Generate Classifier
 
