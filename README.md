@@ -179,6 +179,7 @@ GPU memory usage reports the maximum GPU memory usage.
 
 | File                        	| Running time     	| GPU memory usage |
 | ---------------- | ------------------------------------- | ------------------------------------- |
+| Jupyter notebook                | -	| 3000MiB |
 | Simple_execution.ipynb                | 30 minutes	| 9000MiB |
 | download_models.ipynb                	| 10 minutes	| - |
 | DFTimageGeneration.ipynb              | 50 minutes	| 2000MiB |
@@ -192,8 +193,9 @@ GPU memory usage reports the maximum GPU memory usage.
 | DATLA.ipynb                	          | 2 hours 	| 1000MiB |
 | TLPA.ipynb                	          | 2.5 hours	| 1000MiB |
 | EvaluationAttackmodels.ipynb          | 1 hour	| 800MiB |
+
 Different GPU might lead to quite different running time or GPU memory usage.
-Note that the GPU memory usage depends on what dataset is used for training. (MNIST 
+Note that the GPU memory usage depends on what dataset is used for training (using MNIST -> about 9000MiB, using CIFAR10 -> about 1000MiB).
 
 
 
