@@ -22,6 +22,21 @@ To run DEEPTASTER, you will need the following:
 
 Using Cloud platform like **Google Colab** is an option for your reference.
 
+## Prepare the environment
+
+
+### Setting GPU
+
+
+### Setting Anaconda
+
+
+### Setting Jupyter notebook
+
+### Download source codes
+
+  git clone https://github.com/qkrtjsgp08/DeepTaster.git
+
 ## How To Run 
 
 For quick implementation, we provide pre-trained attack models and DFT images. After installing the necessary packages in requirement.txt, you can run Simple_execution.ipynb to see all the results.
