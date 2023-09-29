@@ -74,6 +74,8 @@ For quick implementation, we provide pre-trained attack models and DFT images. A
 
 Alternatively, if you want to run it step-by-step, you can run it in the following order.
 
+Note that you need to clairify the home directory path in the *DetectionClassifierGeneration.ipynb*, *Evaluation.ipynb*, *EvaluationAttackmodels.ipynb*, and *SImple_excution.ipynb*.
+
 ### Generate Classifier
 
 #### Step 0: Target model generation
