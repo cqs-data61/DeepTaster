@@ -35,9 +35,9 @@ Using Cloud platform like **Google Colab** is an option for your reference.
 
 ### Download source codes
 To download the repository, clone by below command.
-
+```
   git clone https://github.com/qkrtjsgp08/DeepTaster.git
-
+```
 
 ## How To Run 
 
