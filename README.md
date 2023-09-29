@@ -122,7 +122,25 @@ In this section, we provide source codes to generate seven different attak model
 | ./utils/deepsvdd.py                	          | Functions for DeepSVDD [1]. 	|
 | ./utils/train.py                	          | Train models. 	|
 
+## Estimated Running Time
 
+We are running the code on a server equipped with NVIDIA TITAN Xp GPU with CUDA v11.3. 
+Different GPU might lead to quite different running time.
+| Functionality                        	| Running time                      	|
+| ---------------- | ------------------------------------------------------------ |
+| Simple_execution.ipynb                | 30 minutes	|
+| download_models.ipynb                	| 10 minutes	|
+| DFTimageGeneration.ipynb              | 50 minutes	|
+| DetectionClassifierGeneration.ipynb  	| 15 minutes 	|
+| Evaluation.ipynb                	    | 10 minutes	|
+| DAA.ipynb                	            | 3 hours	|
+| SAA.ipynb                	          | 1.5 hours 	|
+| TransferLearning.ipynb                  | 2.5 hours	|
+| FineTuning.ipynb                	          | 1 hour	|
+| Pruning.ipynb                	          | 1 hour 	|
+| DATLA.ipynb                	          | 2 hours 	|
+| TLPA.ipynb                	          | 2.5 hours	|
+| EvaluationAttackmodels.ipynb          | 1 hour	|
 
 
 [1] Ruff et al., "Deep One-Class Classification," Deep OCC ICML 2018
