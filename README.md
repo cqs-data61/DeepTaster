@@ -22,7 +22,7 @@ To run DEEPTASTER, you will need the following:
 
 Using Cloud platform like **Google Colab** is an option for your reference.
 
-## Prepare The Environment
+## Prepare the Environment
 
 
 ### Setting GPU
@@ -49,7 +49,7 @@ To activate environment, run the following command.
    conda activate DeepTaster_environment
 ```
 
-### Setting Jupyter notebook
+### Setting Jupyter Notebook
 We recommend using Jupyter notebook to execute notebooks in the repository.
 
 Installing Jupyter can be done simply by the following command.
@@ -62,7 +62,7 @@ To run Jupyter notebook, execute the follosing command.
   jupyter notebook
 ```
 
-### Download source codes
+### Download Source Codes
 To download the repository, clone by the following command.
 ```
   git clone https://github.com/qkrtjsgp08/DeepTaster.git
