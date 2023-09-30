@@ -31,7 +31,7 @@ This repository require GPU environment.
 If you do not have a GPU environment configured, please refer to the instructions in [https://medium.com/geekculture/deep-learning-gpu-setup-from-scratch-75f730c49c01](https://medium.com/geekculture/deep-learning-gpu-setup-from-scratch-75f730c49c01) to configure one.
 
 ### Setting Anaconda
-We recommend using a virtual environment. In the following steps, we will introduce how to set up a virtual environment using anaconda.
+We recommend using Anaconda to run our repository. In the following steps, we will introduce how to set up a virtual environment using anaconda.
 
 Step 1: install Anaconda
 Implement anaconda following the instruction in [https://www.anaconda.com/](https://www.anaconda.com/) and [https://docs.anaconda.com/free/anaconda/install/linux/](https://docs.anaconda.com/free/anaconda/install/linux/).
