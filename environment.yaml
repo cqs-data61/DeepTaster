@@ -1,5 +1,6 @@
 name: DeepTaster_environment
 channels:
+  - pytorch
   - defaults
 dependencies:
   - _libgcc_mutex=0.1=main
@@ -10,13 +11,16 @@ dependencies:
   - babel=2.11.0=py37h06a4308_0
   - backcall=0.2.0=pyhd3eb1b0_0
   - beautifulsoup4=4.11.1=py37h06a4308_0
+  - blas=1.0=mkl
   - bleach=4.1.0=pyhd3eb1b0_0
   - brotlipy=0.7.0=py37h27cfd23_1003
+  - bzip2=1.0.8=h7b6447c_0
   - ca-certificates=2023.08.22=h06a4308_0
   - certifi=2022.12.7=py37h06a4308_0
   - cffi=1.15.1=py37h74dc2b5_0
   - charset-normalizer=2.0.4=pyhd3eb1b0_0
   - cryptography=39.0.1=py37h9ce1e76_0
+  - cudatoolkit=11.3.1=h2bc3f7f_2
   - cyrus-sasl=2.1.28=h9c0eb46_1
   - dbus=1.13.18=hb2f20db_0
   - debugpy=1.5.1=py37h295c915_0
@@ -24,11 +28,14 @@ dependencies:
   - defusedxml=0.7.1=pyhd3eb1b0_0
   - entrypoints=0.4=py37h06a4308_0
   - expat=2.5.0=h6a678d5_0
+  - ffmpeg=4.3=hf484d3e_0
   - flit-core=3.6.0=pyhd3eb1b0_0
   - fontconfig=2.14.1=h4c34cd2_2
   - freetype=2.12.1=h4a9f257_0
   - giflib=5.2.1=h5eee18b_3
   - glib=2.69.1=h4ff587b_1
+  - gmp=6.2.1=h295c915_3
+  - gnutls=3.6.15=he1e5248_0
   - gst-plugins-base=1.14.1=h6a678d5_1
   - gstreamer=1.14.1=h5eee18b_1
   - icu=58.2=he6710b0_3
@@ -36,6 +43,7 @@ dependencies:
   - importlib-metadata=4.11.3=py37h06a4308_0
   - importlib_metadata=4.11.3=hd3eb1b0_0
   - importlib_resources=5.2.0=pyhd3eb1b0_1
+  - intel-openmp=2021.4.0=h06a4308_3561
   - ipykernel=6.15.2=py37h06a4308_0
   - ipython=7.31.1=py37h06a4308_1
   - ipython_genutils=0.2.0=pyhd3eb1b0_1
@@ -55,6 +63,8 @@ dependencies:
   - jupyterlab_server=2.19.0=py37h06a4308_0
   - jupyterlab_widgets=1.0.0=pyhd3eb1b0_1
   - krb5=1.20.1=h568e23c_1
+  - lame=3.100=h7b6447c_0
+  - lcms2=2.12=h3be6417_0
   - ld_impl_linux-64=2.38=h1181459_1
   - lerc=3.0=h295c915_0
   - libclang13=14.0.6=default_he11475f_1
@@ -65,12 +75,16 @@ dependencies:
   - libffi=3.3=he6710b0_2
   - libgcc-ng=11.2.0=h1234567_1
   - libgomp=11.2.0=h1234567_1
+  - libiconv=1.16=h7f8727e_2
+  - libidn2=2.3.4=h5eee18b_0
   - libllvm14=14.0.6=hef93074_0
   - libpng=1.6.39=h5eee18b_0
   - libpq=12.15=h37d81fd_1
   - libsodium=1.0.18=h7b6447c_0
   - libstdcxx-ng=11.2.0=h1234567_1
+  - libtasn1=4.19.0=h5eee18b_0
   - libtiff=4.5.1=h6a678d5_0
+  - libunistring=0.9.10=h27cfd23_0
   - libuuid=1.41.5=h5eee18b_0
   - libwebp=1.3.2=h11a3e52_0
   - libwebp-base=1.3.2=h5eee18b_0
@@ -82,6 +96,10 @@ dependencies:
   - markupsafe=2.1.1=py37h7f8727e_0
   - matplotlib-inline=0.1.6=py37h06a4308_0
   - mistune=0.8.4=py37h14c3975_1001
+  - mkl=2021.4.0=h06a4308_640
+  - mkl-service=2.4.0=py37h7f8727e_0
+  - mkl_fft=1.3.1=py37hd3c417c_0
+  - mkl_random=1.2.2=py37h51133e4_0
   - mysql=5.7.24=he378463_2
   - nbclassic=0.5.2=py37h06a4308_0
   - nbclient=0.5.13=py37h06a4308_0
@@ -89,10 +107,14 @@ dependencies:
   - nbformat=5.7.0=py37h06a4308_0
   - ncurses=6.4=h6a678d5_0
   - nest-asyncio=1.5.6=py37h06a4308_0
+  - nettle=3.7.3=hbbd107a_1
   - notebook=6.5.2=py37h06a4308_0
   - notebook-shim=0.2.2=py37h06a4308_0
   - nspr=4.35=h6a678d5_0
   - nss=3.89.1=h6a678d5_0
+  - numpy-base=1.21.5=py37ha15fc14_3
+  - olefile=0.46=py37_0
+  - openh264=2.1.1=h4ff587b_0
   - openssl=1.1.1w=h7f8727e_0
   - packaging=22.0=py37h06a4308_0
   - pandocfilters=1.5.0=pyhd3eb1b0_0
@@ -118,6 +140,8 @@ dependencies:
   - python=3.7.10=h12debd9_4
   - python-dateutil=2.8.2=pyhd3eb1b0_0
   - python-fastjsonschema=2.16.2=py37h06a4308_0
+  - pytorch=1.13.1=py3.7_cpu_0
+  - pytorch-mutex=1.0=cpu
   - pytz=2022.7=py37h06a4308_0
   - pyzmq=23.2.0=py37h6a678d5_0
   - qt-main=5.15.2=h5b8104b_9
@@ -209,4 +233,3 @@ dependencies:
       - tqdm==4.66.1
       - werkzeug==2.2.3
       - wrapt==1.15.0
-
