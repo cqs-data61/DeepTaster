@@ -22,7 +22,7 @@ To run DEEPTASTER, you will need the following:
 
 Using Cloud platform like **Google Colab** is an option for your reference.
 
-## Prepare the environment
+## Prepare The Environment
 
 
 ### Setting GPU
