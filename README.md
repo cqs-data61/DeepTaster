@@ -72,7 +72,7 @@ To download the repository, clone by the following command.
 
 ## How To Run 
 
-Before executing notebooks, you need to modify the home directory path in the *DetectionClassifierGeneration.ipynb*, *Evaluation.ipynb*, *EvaluationAttackmodels.ipynb*, and *SImple_excution.ipynb*.
+Before running notebooks, you need to modify the home directory path in the *DetectionClassifierGeneration.ipynb*, *Evaluation.ipynb*, *EvaluationAttackmodels.ipynb*, and *SImple_excution.ipynb*.
 
 For quick implementation, we provide pre-trained attack models and DFT images. After installing the necessary packages in requirement.txt, you can run Simple_execution.ipynb to see all the results.
 
