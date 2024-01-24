@@ -1,4 +1,13 @@
-# ACSAC23 Artifact for DeepTaster Submission
+# DeepTaster: Adversarial Perturbation-Based Fingerprinting to Identify Proprietary Dataset Use in Deep Neural Networks
+
+This is for releasing the source code of our work "DeepTaster: Adversarial Perturbation-Based Fingerprinting to Identify Proprietary Dataset Use in Deep Neural Networks." If you find it is useful and used for publication, please kindly cite out work as:
+```python
+@article{Park2021DeepTaster,
+title={DeepTaster: Adversarial Perturbation-Based Fingerprinting to Identify Proprietary Dataset Use in Deep Neural Networks},
+author={Park, Seonhye and Abuadbba, Alsharif and Wang, Shuo and Moore, Kristen and Gao, Yansong and Kim, Hyoungshick and Nepal, Surya},
+publisher = {Association for Computing Machinery},
+year={2023}}
+```
 
 ## Title
 DeepTaster: Adversarial Perturbation-Based Fingerprinting to Identify Proprietary Dataset Use in Deep Neural Networks
